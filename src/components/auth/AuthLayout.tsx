@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { motion } from 'motion/react'
 import type { ReactNode } from 'react'
 import AuthSidePanel from './AuthSidePanel'
 

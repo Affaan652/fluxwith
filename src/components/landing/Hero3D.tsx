@@ -42,15 +42,11 @@ function ParticleField({ count = 200 }) {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={particles.positions.length / 3}
-          array={particles.positions}
-          itemSize={3}
+          args={[particles.positions, 3]}
         />
         <bufferAttribute
           attach="attributes-color"
-          count={particles.colors.length / 3}
-          array={particles.colors}
-          itemSize={3}
+          args={[particles.colors, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
@@ -67,7 +63,7 @@ function ParticleField({ count = 200 }) {
 }
 
 // Main floating orb with distortion
-function FloatingOrb({ position = [0, 0, 0], color = '#00f5d4', speed = 2, distort = 0.4 }) {
+function FloatingOrb({ position = [0, 0, 0] as [number, number, number], color = '#00f5d4', speed = 2, distort = 0.4 }) {
   const mesh = useRef<THREE.Mesh>(null!)
 
   useFrame((state) => {
@@ -96,7 +92,7 @@ function FloatingOrb({ position = [0, 0, 0], color = '#00f5d4', speed = 2, disto
 }
 
 // Geometric ring/torus
-function FloatingRing({ position = [0, 0, 0], color = '#9b5de5', speed = 1.5 }) {
+function FloatingRing({ position = [0, 0, 0] as [number, number, number], color = '#9b5de5', speed = 1.5 }) {
   return (
     <Float speed={speed} rotationIntensity={2} floatIntensity={1.5}>
       <Torus args={[1.2, 0.15, 16, 100]} position={position}>
@@ -113,7 +109,7 @@ function FloatingRing({ position = [0, 0, 0], color = '#9b5de5', speed = 1.5 }) 
 }
 
 // Floating cube with wobble effect
-function FloatingCube({ position = [0, 0, 0], color = '#f72585', speed = 1 }) {
+function FloatingCube({ position = [0, 0, 0] as [number, number, number], color = '#f72585', speed = 1 }) {
   return (
     <Float speed={speed} rotationIntensity={1.5} floatIntensity={2}>
       <Box args={[0.8, 0.8, 0.8]} position={position}>

@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Float, MeshDistortMaterial, Sphere } from '@react-three/drei'
 import * as THREE from 'three'
+import NavBar from '../components/landing/NavBar'
+import Footer from '../components/landing/Footer'
 
 // 3D Orb component for pricing cards
 function PricingOrb({ color = '#00f5d4' }: { color?: string }) {
