@@ -56,8 +56,10 @@ export default function Pricing() {
           return (
             <div
               key={plan.name}
-              className={`rounded-2xl border p-8 ${
-                plan.highlighted ? 'border-flux-cyan bg-ash-light' : 'border-line bg-ash'
+              className={`rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-1 ${
+                plan.highlighted
+                  ? 'border-flux-cyan/70 bg-ash-light shadow-[0_0_40px_-12px_rgba(94,234,212,0.35)]'
+                  : 'border-line bg-ash'
               }`}
             >
               <div className="flex items-baseline justify-between">
@@ -86,7 +88,7 @@ export default function Pricing() {
               {isExternal ? (
                 <a
                   href={plan.href}
-                  className={`lemonsqueezy-button mt-8 block rounded-lg px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-[1.02] ${
+                  className={`lemonsqueezy-button mt-8 block rounded-full px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-[1.02] ${
                     plan.highlighted ? 'bg-flux-cyan text-void' : 'bg-bone text-void'
                   }`}
                 >
@@ -95,7 +97,7 @@ export default function Pricing() {
               ) : (
                 <Link
                   to={plan.href}
-                  className={`mt-8 block rounded-lg px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-[1.02] ${
+                  className={`mt-8 block rounded-full px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-[1.02] ${
                     plan.highlighted ? 'bg-flux-cyan text-void' : 'bg-bone text-void'
                   }`}
                 >

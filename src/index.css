@@ -95,6 +95,42 @@
     background: var(--color-flux-amber);
     animation-delay: -6s;
   }
+
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.02);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(6px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(94, 234, 212, 0.35) 0%,
+      rgba(255, 255, 255, 0.12) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 138, 61, 0.12) 80%,
+      rgba(255, 255, 255, 0.35) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .shiny-text {
+    background-size: 200% auto;
+    animation: shiny-sweep 6s linear infinite;
+  }
 }
 
 @keyframes flux-drift {
@@ -121,8 +157,21 @@
   animation: auth-float 7s ease-in-out infinite;
 }
 
+@keyframes shiny-sweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .auth-float-card {
+    animation: none;
+  }
+
+  .shiny-text {
     animation: none;
   }
 }

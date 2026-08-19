@@ -1,5 +1,6 @@
 import NavBar from '../components/landing/NavBar'
 import Hero from '../components/landing/Hero'
+import StudioStrip from '../components/landing/StudioStrip'
 import Features from '../components/landing/Features'
 import HowItWorks from '../components/landing/HowItWorks'
 import Pricing from '../components/landing/Pricing'
@@ -13,6 +14,7 @@ export default function Landing() {
     <div className="min-h-screen bg-void">
       <NavBar />
       <Hero />
+      <StudioStrip />
       <Features />
       <HowItWorks />
       <Pricing />

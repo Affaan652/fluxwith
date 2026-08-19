@@ -61,7 +61,7 @@ export default function Features() {
         {features.map((feature) => (
           <div
             key={feature.title}
-            className={`rounded-xl border border-line bg-ash p-6 transition-colors hover:border-flux-cyan/40 ${feature.span}`}
+            className={`liquid-glass rounded-2xl p-6 transition-transform hover:-translate-y-1 ${feature.span}`}
           >
             <h3 className="font-display text-lg font-medium">{feature.title}</h3>
             <p className="mt-2 text-sm text-fume">{feature.body}</p>
