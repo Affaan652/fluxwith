@@ -1,5 +1,5 @@
 import NavBar from '../components/landing/NavBar'
-import Hero from '../components/landing/Hero'
+import Hero3D from '../components/landing/Hero3D'
 import StudioStrip from '../components/landing/StudioStrip'
 import Features from '../components/landing/Features'
 import HowItWorks from '../components/landing/HowItWorks'
@@ -11,16 +11,35 @@ import Footer from '../components/landing/Footer'
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-void">
+    <div className="min-h-screen bg-void overflow-hidden">
+      {/* Navigation */}
       <NavBar />
-      <Hero />
+      
+      {/* Hero Section with 3D Animation */}
+      <Hero3D />
+      
+      {/* Trusted By / Studio Strip */}
       <StudioStrip />
+      
+      {/* Features Grid */}
       <Features />
+      
+      {/* How It Works */}
       <HowItWorks />
+      
+      {/* Pricing Section */}
       <Pricing />
+      
+      {/* Feature Comparison Table */}
       <FeatureComparison />
+      
+      {/* Testimonials */}
       <Testimonials />
+      
+      {/* Final CTA */}
       <FinalCta />
+      
+      {/* Footer */}
       <Footer />
     </div>
   )
