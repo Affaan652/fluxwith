@@ -4,16 +4,6 @@ import { useState } from 'react'
 const testimonials = [
   {
     id: 1,
-    name: 'Sarah Chen',
-    role: 'Freelance Designer',
-    avatar: 'SC',
-    content: 'FluxWith completely transformed my workflow. I used to spend days on initial mockups — now I have a solid foundation in minutes. The AI understands design intent better than any tool I\'ve used.',
-    rating: 5,
-    project: 'Portfolio website for photographer',
-    result: 'Launched in 2 hours',
-  },
-  {
-    id: 2,
     name: 'Marcus Rodriguez',
     role: 'Startup Founder',
     avatar: 'MR',
@@ -23,17 +13,17 @@ const testimonials = [
     result: '40% increase in signups',
   },
   {
-    id: 3,
+    id: 2,
     name: 'Emily Watson',
     role: 'Marketing Manager',
     avatar: 'EW',
-    content: 'The ability to quickly generate and iterate on landing pages has been game-changing for our A/B testing. We can now test 5x more variants in the same timeframe.',
+    content: 'The ability to quickly build and iterate on landing pages has been game-changing for our A/B testing. We can now test 5x more variants in the same timeframe.',
     rating: 5,
     project: 'Campaign landing pages',
     result: '3x faster iteration cycle',
   },
   {
-    id: 4,
+    id: 3,
     name: 'David Kim',
     role: 'E-commerce Owner',
     avatar: 'DK',
@@ -43,7 +33,7 @@ const testimonials = [
     result: 'Saved $5,000+ in dev costs',
   },
   {
-    id: 5,
+    id: 4,
     name: 'Lisa Thompson',
     role: 'Agency Director',
     avatar: 'LT',
@@ -53,7 +43,7 @@ const testimonials = [
     result: '60% reduction in delivery time',
   },
   {
-    id: 6,
+    id: 5,
     name: 'Alex Patel',
     role: 'Indie Hacker',
     avatar: 'AP',
@@ -65,21 +55,21 @@ const testimonials = [
 ]
 
 const stats = [
-  { value: '4.9/5', label: 'Average rating', icon: 'star' },
-  { value: '50K+', label: 'Sites generated', icon: 'rocket' },
-  { value: '98%', label: 'Would recommend', icon: 'heart' },
-  { value: '< 24h', label: 'Average response time', icon: 'chat' },
+  { value: '4.9/5', label: 'Average rating', icon: '⭐' },
+  { value: '50K+', label: 'Sites built', icon: '🚀' },
+  { value: '98%', label: 'Would recommend', icon: '💜' },
+  { value: '< 24h', label: 'Support response', icon: '💬' },
 ]
 
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-flux-purple/5 to-transparent pointer-events-none" />
+    <section className="relative bg-gray-50/50 py-28 overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:6rem_6rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_20%,transparent_100%)]" />
 
-      <div className="relative z-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,12 +78,16 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <span className="eyebrow inline-block mb-4">Testimonials</span>
-          <h2 className="font-display text-display-lg font-bold tracking-tight">
+          <span className="inline-block mb-4 text-sm font-semibold uppercase tracking-wider text-gray-500">
+            Testimonials
+          </span>
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
             Loved by creators{' '}
-            <span className="gradient-text">worldwide</span>
+            <span className="bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 bg-clip-text text-transparent">
+              worldwide
+            </span>
           </h2>
-          <p className="mt-4 text-lg text-fume leading-relaxed">
+          <p className="mt-4 text-lg text-gray-500 leading-relaxed">
             See what builders, designers, and entrepreneurs are saying about their experience with FluxWith.
           </p>
         </motion.div>
@@ -104,22 +98,13 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6"
+          className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           {stats.map((stat) => (
-            <div key={stat.label} className="liquid-glass rounded-xl p-6 text-center">
-              <div className="text-2xl mb-2">
-                  <svg className="w-8 h-8 mx-auto text-flux-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={
-                      stat.icon === 'star' ? 'M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.562.562 0 00.475.345l5.518.44a.562.562 0 01-.329.98l-3.976 2.888a.562.562 0 00-.171.506l1.49-4.623a.562.562 0 010-.96l1.49 4.623a.562.562 0 00-.17.506L6.01 12.385a.562.562 0 01-.33-.98l5.518-.44a.562.562 0 00.475-.345L11.48 3.5z' :
-                      stat.icon === 'rocket' ? 'M15.59 14.37a6 6 0 01-5.159 4.03L7.88 21.102a.75.75 0 01-1.06 1.06l-2.702-5.547A6 6 0 013.37 7.88l-5.547 2.702a.75.75 0 011-1.06-1.06l4.03-5.159A6 6 0 1114.37-5.59z' :
-                      stat.icon === 'heart' ? 'M21 8.25c0-2.485-2.099-4.5-4.688-4.5S11.625 3.765 11.625 6.188c0 4.316 3.125 7.812 7.375 7.812 4.589 0 4.688-2.015 4.688-4.5S19.5 10.156 19.5 8.25z' :
-                      'M8.625 12c0-1.516 1.226-2.75 2.75-2.75S14.125 10.484 14.25 12s-1.226 2.75-2.75 2.75S8.625 13.516 8.625 12zM12 18.75H7.5v-.875c0-1.516 1.226-2.75 2.75-2.75s2.75 1.234 2.75 2.75v.875h4.5v.875c0 1.516-1.226 2.75-2.75 2.75S12.5 20.284 12.5 18.75v-.875z'
-                    } />
-                  </svg>
-                </div>
-              <div className="font-display text-2xl font-bold">{stat.value}</div>
-              <div className="mt-1 text-sm text-fume">{stat.label}</div>
+            <div key={stat.label} className="rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-2xl mb-2">{stat.icon}</div>
+              <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+              <div className="mt-1 text-sm text-gray-500">{stat.label}</div>
             </div>
           ))}
         </motion.div>
@@ -132,27 +117,27 @@ export default function Testimonials() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16"
         >
-          <div className="liquid-glass rounded-3xl p-8 md:p-12 relative overflow-hidden">
+          <div className="rounded-3xl border border-gray-200 bg-white p-8 md:p-12 shadow-xl shadow-gray-200/50 relative overflow-hidden">
             {/* Quote decoration */}
-            <div className="absolute top-6 left-8 text-8xl text-flux-cyan/10 font-serif leading-none">"</div>
+            <div className="absolute top-8 left-10 text-[12rem] leading-none text-gray-100 font-serif select-none">"</div>
             
             <div className="relative z-10 max-w-4xl mx-auto">
-              <div className="flex flex-col md:flex-row md:items-center gap-8">
+              <div className="flex flex-col lg:flex-row lg:items-center gap-10">
                 {/* Avatar & info */}
-                <div className="flex-shrink-0 flex flex-col items-center md:items-start">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-flux-cyan to-flux-purple flex items-center justify-center text-2xl font-bold text-void mb-4">
+                <div className="flex-shrink-0 flex flex-col items-center lg:items-start">
+                  <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center text-3xl font-bold text-white shadow-lg shadow-gray-300/30 mb-5">
                     {testimonials[activeIndex].avatar}
                   </div>
-                  <div className="text-center md:text-left">
-                    <h4 className="font-semibold text-lg">{testimonials[activeIndex].name}</h4>
-                    <p className="text-sm text-fume">{testimonials[activeIndex].role}</p>
+                  <div className="text-center lg:text-left">
+                    <h4 className="font-bold text-xl text-gray-900">{testimonials[activeIndex].name}</h4>
+                    <p className="text-base text-gray-500 mt-1">{testimonials[activeIndex].role}</p>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="flex-1">
                   {/* Rating stars */}
-                  <div className="flex gap-1 mb-4">
+                  <div className="flex gap-1 mb-5">
                     {Array.from({ length: testimonials[activeIndex].rating }).map((_, i) => (
                       <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -160,16 +145,16 @@ export default function Testimonials() {
                     ))}
                   </div>
 
-                  <blockquote className="text-lg md:text-xl leading-relaxed text-bone-light mb-6">
+                  <blockquote className="text-lg md:text-xl leading-relaxed text-gray-700 mb-7 font-medium">
                     "{testimonials[activeIndex].content}"
                   </blockquote>
 
-                  <div className="flex flex-wrap gap-4">
-                    <div className="rounded-lg bg-ash-light/50 px-4 py-2 text-sm">
-                      <span className="text-fume">Project:</span>{' '}
-                      <span className="text-bone font-medium">{testimonials[activeIndex].project}</span>
+                  <div className="flex flex-wrap gap-3">
+                    <div className="rounded-xl bg-gray-100 px-4 py-2.5 text-sm border border-gray-200">
+                      <span className="text-gray-500">Project:</span>{' '}
+                      <span className="text-gray-900 font-semibold">{testimonials[activeIndex].project}</span>
                     </div>
-                    <div className="rounded-lg bg-flux-cyan/10 border border-flux-cyan/30 px-4 py-2 text-sm text-flux-cyan font-medium">
+                    <div className="rounded-xl bg-black px-4 py-2.5 text-sm text-white font-semibold">
                       {testimonials[activeIndex].result}
                     </div>
                   </div>
@@ -179,16 +164,16 @@ export default function Testimonials() {
           </div>
 
           {/* Navigation dots */}
-          <div className="flex justify-center gap-2 mt-6">
+          <div className="flex justify-center gap-2 mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 type="button"
                 onClick={() => setActiveIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
+                className={`h-2 rounded-full transition-all duration-300 ${
                   index === activeIndex 
-                    ? 'bg-flux-cyan w-8' 
-                    : 'bg-line hover:bg-fume'
+                    ? 'w-8 bg-gray-900' 
+                    : 'w-2 bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`View testimonial ${index + 1}`}
               />
@@ -197,7 +182,7 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Grid of smaller testimonial cards */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.slice(1).map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
@@ -205,32 +190,32 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="liquid-glass rounded-2xl p-6 hover:-translate-y-1 transition-transform cursor-pointer"
+              className="rounded-2xl border border-gray-200 bg-white p-6 hover:-translate-y-1 hover:shadow-lg hover:shadow-gray-200/50 transition-all cursor-pointer group"
               onClick={() => setActiveIndex(testimonials.indexOf(testimonial))}
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-flux-purple to-flux-pink flex items-center justify-center text-sm font-bold text-white">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-gray-800 to-gray-600 flex items-center justify-center text-sm font-bold text-white group-hover:from-gray-900 group-hover:to-gray-700 transition-colors">
                   {testimonial.avatar}
                 </div>
                 <div>
-                  <h4 className="font-semibold text-sm">{testimonial.name}</h4>
-                  <p className="text-xs text-fume">{testimonial.role}</p>
+                  <h4 className="font-bold text-sm text-gray-900">{testimonial.name}</h4>
+                  <p className="text-xs text-gray-500">{testimonial.role}</p>
                 </div>
               </div>
               
-              <p className="text-sm text-fume-light leading-relaxed line-clamp-3">
+              <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
                 "{testimonial.content}"
               </p>
               
-              <div className="mt-4 pt-4 border-t border-line/50 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
                 <div className="flex gap-0.5">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <svg key={i} className="w-3 h-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <svg key={i} className="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
-                <span className="text-xs text-flux-cyan font-medium">{testimonial.result}</span>
+                <span className="text-xs font-semibold text-gray-900 bg-gray-100 px-2.5 py-1 rounded-full">{testimonial.result}</span>
               </div>
             </motion.div>
           ))}
