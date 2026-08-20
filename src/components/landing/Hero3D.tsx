@@ -241,7 +241,7 @@ const examplePrompts = [
   'Create a coffee shop website with a dark theme',
   'Build a landing page for a fitness coaching app',
   'Design a minimal portfolio for a photographer',
-  'Generate an e-commerce store for handmade jewelry',
+  'Build an e-commerce store for handmade jewelry',
   'Make a SaaS product landing page with pricing',
 ]
 
@@ -280,7 +280,7 @@ export default function Hero3D() {
             className="inline-flex items-center gap-2 rounded-full border border-flux-cyan/30 bg-flux-cyan/10 px-4 py-2"
           >
             <span className="h-2 w-2 rounded-full bg-flux-cyan animate-pulse" />
-            <span className="eyebrow text-xs">AI-Powered Generation</span>
+            <span className="eyebrow text-xs">AI-Powered Building</span>
           </motion.div>
 
           <motion.h1
@@ -305,7 +305,7 @@ export default function Hero3D() {
           >
             FluxWith reads your written brief and forges a complete, editable website around it — 
             hero sections, feature grids, testimonials, pricing tables, and more. 
-            Generated in one pass and ready to publish in minutes.
+            Built in one pass and ready to publish in minutes.
           </motion.p>
 
           {/* Prompt input */}
@@ -361,7 +361,7 @@ export default function Hero3D() {
             className="flex items-center gap-8 pt-4 border-t border-line/50"
           >
             {[
-              { label: 'Sites Generated', value: '50K+' },
+              { label: 'Sites Built', value: '50K+' },
               { label: 'Active Users', value: '12K+' },
               { label: 'Uptime', value: '99.9%' },
             ].map((stat) => (

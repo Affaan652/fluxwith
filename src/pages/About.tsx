@@ -68,106 +68,97 @@ const values = [
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       <NavBar />
       
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-gray-50 to-white">
-        <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="text-sm font-semibold uppercase tracking-wider text-gray-500">Company</span>
-            <h1 className="mt-3 text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              About FluxWith
-            </h1>
-            <p className="mt-6 text-xl leading-relaxed text-gray-600 max-w-2xl">
-              We're on a mission to democratize website creation — making it 
-              accessible to everyone, regardless of technical skills.
-            </p>
+      {/* Hero - COMPACT */}
+      <section className="pt-16 pb-12 px-6">
+        <div className="mx-auto max-w-6xl">
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}>
+            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Company</span>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">About FluxWith</h1>
+            <p className="mt-2 text-sm text-gray-400 max-w-xl">We're on a mission to democratize website creation — making it accessible to everyone, regardless of technical skills.</p>
           </motion.div>
         </div>
       </section>
 
       {/* Mission */}
-      <section className="py-24 px-6 border-t border-gray-100">
-        <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-12 px-6 border-t border-white/10">
+        <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="text-4xl font-bold text-gray-900">Our mission</h2>
-            <p className="mt-6 text-lg leading-relaxed text-gray-600">
+            <h2 className="text-2xl font-bold text-white">Our mission</h2>
+            <p className="mt-3 text-sm leading-relaxed text-gray-400">
               Founded in 2024, FluxWith was born from a simple idea: everyone should be able to 
               create beautiful websites without needing to learn complex technologies.
             </p>
-            <p className="mt-4 text-lg leading-relaxed text-gray-600">
+            <p className="mt-2 text-sm leading-relaxed text-gray-400">
               We believe AI can bridge the gap between imagination and reality, empowering 
               creators, entrepreneurs, and businesses to bring their ideas to life instantly.
             </p>
             
-            <div className="mt-8 grid grid-cols-2 gap-6">
+            <div className="mt-6 grid grid-cols-2 gap-6">
               <div>
-                <div className="text-3xl font-bold text-black">50K+</div>
-                <div className="text-sm text-gray-500 mt-1">Sites created</div>
+                <div className="text-2xl font-bold text-white tabular-nums">50K+</div>
+                <div className="text-xs text-gray-500 mt-1">Sites created</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-black">120+</div>
-                <div className="text-sm text-gray-500 mt-1">Countries</div>
+                <div className="text-2xl font-bold text-white tabular-nums">120+</div>
+                <div className="text-xs text-gray-500 mt-1">Countries</div>
               </div>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 aspect-square flex items-center justify-center"
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="rounded-xl bg-white/5 border border-white/10 aspect-square flex items-center justify-center"
           >
-            <div className="text-center p-12">
-              <div className="inline-flex rounded-2xl bg-black p-6 mb-4">
-                <span className="text-4xl font-bold text-white">F</span>
+            <div className="text-center p-8">
+              <div className="inline-flex rounded-xl bg-white p-4 mb-3">
+                <span className="text-2xl font-bold text-black">F</span>
               </div>
-              <p className="text-lg font-medium text-gray-700">Building the future</p>
+              <p className="text-sm font-medium text-gray-400">Building the future</p>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="py-24 px-6 bg-gray-50">
-        <div className="mx-auto max-w-7xl">
+      <section className="py-12 px-6">
+        <div className="mx-auto max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-10"
           >
-            <h2 className="text-4xl font-bold text-gray-900">Our values</h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-white">Our values</h2>
+            <p className="mt-2 text-sm text-gray-400 max-w-xl mx-auto">
               The principles that guide everything we do.
             </p>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 border border-gray-200"
+                transition={{ duration: 0.3, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-white/5 rounded-lg p-5 border border-white/10 hover:border-white/20 transition-colors"
               >
-                <div className="mb-4 inline-flex rounded-lg bg-black p-2 text-white">{value.icon}</div>
-                <h3 className="font-semibold text-gray-900">{value.title}</h3>
-                <p className="mt-2 text-sm text-gray-600">{value.description}</p>
+                <div className="mb-3 inline-flex rounded-lg bg-white p-2 text-black">{value.icon}</div>
+                <h3 className="font-semibold text-white text-sm">{value.title}</h3>
+                <p className="mt-1 text-xs text-gray-400">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -175,66 +166,57 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className="py-24 px-6">
-        <div className="mx-auto max-w-7xl">
+      <section className="py-12 px-6">
+        <div className="mx-auto max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-10"
           >
-            <h2 className="text-4xl font-bold text-gray-900">Meet the team</h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-2xl font-bold text-white">Meet the team</h2>
+            <p className="mt-2 text-sm text-gray-400">
               The people behind FluxWith.
             </p>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {team.map((member, index) => (
               <motion.div
                 key={member.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 className="text-center"
               >
-                <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-gray-100 to-gray-200 mb-4 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-gray-400">{member.name.charAt(0)}</span>
+                <div className="w-20 h-20 mx-auto rounded-full bg-white/10 mb-3 flex items-center justify-center">
+                  <span className="text-xl font-bold text-gray-400">{member.name.charAt(0)}</span>
                 </div>
-                <h3 className="font-semibold text-gray-900">{member.name}</h3>
-                <p className="text-sm text-gray-500 mt-1">{member.role}</p>
-                <p className="text-sm text-gray-600 mt-2">{member.bio}</p>
+                <h3 className="font-semibold text-white text-sm">{member.name}</h3>
+                <p className="text-xs text-gray-500 mt-1">{member.role}</p>
+                <p className="text-xs text-gray-400 mt-2">{member.bio}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-black py-24 px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+      {/* CTA - WHITE FOR CONTRAST */}
+      <section className="bg-white py-12 px-6">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="text-2xl font-bold text-black">Want to join us?</h2>
+          <p className="mt-2 text-sm text-gray-600">We're always looking for talented people to join our team.</p>
+          <Link
+            to="/careers"
+            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-black px-6 py-2.5 text-sm font-semibold text-white hover:bg-gray-800 active:scale-[0.96] transition-all duration-150 ease-out"
           >
-            <h2 className="text-4xl font-bold text-white">Want to join us?</h2>
-            <p className="mt-4 text-gray-400">
-              We're always looking for talented people to join our team.
-            </p>
-            <Link
-              to="/careers"
-              className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-semibold text-black hover:bg-gray-100 transition-colors"
-            >
-              View open positions
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-          </motion.div>
+            View open positions
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Link>
         </div>
       </section>
 

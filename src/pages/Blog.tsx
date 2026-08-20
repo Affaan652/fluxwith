@@ -35,80 +35,78 @@ const posts = [
 
 export default function Blog() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       <NavBar />
       
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-gray-50 to-white">
-        <div className="mx-auto max-w-7xl">
+      {/* Hero - COMPACT */}
+      <section className="pt-16 pb-12 px-6">
+        <div className="mx-auto max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-sm font-semibold uppercase tracking-wider text-gray-500">Resources</span>
-            <h1 className="mt-3 text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Blog
-            </h1>
-            <p className="mt-6 text-xl leading-relaxed text-gray-600 max-w-2xl">
+            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Resources</span>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">Blog</h1>
+            <p className="mt-2 text-sm text-gray-400 max-w-xl">
               Insights, tutorials, and updates from the FluxWith team.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Featured post */}
-      <section className="px-6 pb-16">
-        <div className="mx-auto max-w-7xl">
+      {/* Featured post - COMPACT */}
+      <section className="px-6 pb-8">
+        <div className="mx-auto max-w-6xl">
           <motion.article
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="rounded-2xl border border-gray-200 overflow-hidden md:grid md:grid-cols-2"
+            transition={{ duration: 0.3, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="rounded-lg border border-white/10 overflow-hidden md:grid md:grid-cols-2"
           >
-            <div className="aspect-video md:aspect-auto bg-gradient-to-br from-black to-gray-800 flex items-center justify-center p-12">
-              <span className="text-white text-lg font-semibold">Featured Post</span>
+            <div className="aspect-video md:aspect-auto bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center p-8">
+              <span className="text-white text-sm font-semibold">Featured Post</span>
             </div>
-            <div className="p-8 flex flex-col justify-center">
-              <span className="inline-flex w-fit px-3 py-1 rounded-full bg-black text-xs font-medium text-white mb-4">
+            <div className="p-6 flex flex-col justify-center">
+              <span className="inline-flex w-fit px-2 py-0.5 rounded-full bg-white text-[10px] font-medium text-black mb-3">
                 Featured
               </span>
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">{posts[0].title}</h2>
-              <p className="text-gray-600 mb-4">{posts[0].excerpt}</p>
-              <div className="flex items-center gap-4 text-sm text-gray-500">
+              <h2 className="text-lg font-bold text-white mb-2">{posts[0].title}</h2>
+              <p className="text-gray-400 text-sm mb-3">{posts[0].excerpt}</p>
+              <div className="flex items-center gap-3 text-xs text-gray-500">
                 <time>{posts[0].date}</time>
                 <span>{posts[0].readTime} read</span>
-                <a href="#" className="font-medium text-black hover:underline">Read more</a>
+                <a href="#" className="font-medium text-gray-300 hover:text-white transition-colors">Read more</a>
               </div>
             </div>
           </motion.article>
         </div>
       </section>
 
-      {/* Posts grid */}
-      <section className="py-24 px-6 border-t border-gray-100">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-2xl font-bold text-gray-900 mb-12">Latest articles</h2>
+      {/* Posts grid - COMPACT */}
+      <section className="py-12 px-6 border-t border-white/10">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-lg font-bold text-white mb-6">Latest articles</h2>
           
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {posts.slice(1).map((post, index) => (
               <motion.article
                 key={post.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 className="group"
               >
-                <a href="#" className="block rounded-xl overflow-hidden border border-gray-200 hover:border-black transition-colors">
-                  <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200" />
-                  <div className="p-6">
-                    <span className="text-xs font-medium text-gray-500">{post.category}</span>
-                    <h3 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-black transition-colors">
+                <a href="#" className="block rounded-lg overflow-hidden border border-white/10 hover:border-white/20 transition-colors duration-150">
+                  <div className="aspect-video bg-gradient-to-br from-white/10 to-white/5" />
+                  <div className="p-4">
+                    <span className="text-[10px] font-medium text-gray-500">{post.category}</span>
+                    <h3 className="mt-1 text-sm font-semibold text-white group-hover:text-white transition-colors">
                       {post.title}
                     </h3>
-                    <p className="mt-2 text-sm text-gray-600 line-clamp-2">{post.excerpt}</p>
-                    <div className="mt-4 flex items-center gap-4 text-xs text-gray-400">
+                    <p className="mt-1 text-xs text-gray-400 line-clamp-2">{post.excerpt}</p>
+                    <div className="mt-3 flex items-center gap-3 text-[10px] text-gray-500">
                       <time>{post.date}</time>
                       <span>{post.readTime} min</span>
                     </div>

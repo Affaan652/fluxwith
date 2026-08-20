@@ -6,29 +6,25 @@ import Footer from '../components/landing/Footer'
 
 const featureCategories = [
   {
-    id: 'generation',
-    title: 'AI Generation',
+    id: 'building',
+    title: 'AI Building',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
       </svg>
     ),
-    color: 'cyan',
     features: [
       {
         name: 'Prompt-to-Site',
-        description: 'Transform natural language into complete websites with AI-powered generation.',
-        demo: 'prompt',
+        description: 'Transform natural language into complete websites with AI-powered building.',
       },
       {
         name: 'Smart Layouts',
         description: 'AI automatically selects the best layout based on your content type and goals.',
-        demo: 'layout',
       },
       {
         name: 'Content Expansion',
-        description: 'AI generates relevant copy, headlines, and CTAs from your brief.',
-        demo: 'content',
+        description: 'AI creates relevant copy, headlines, and CTAs from your brief.',
       },
     ],
   },
@@ -36,26 +32,22 @@ const featureCategories = [
     id: 'editor',
     title: 'Visual Editor',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
       </svg>
     ),
-    color: 'purple',
     features: [
       {
         name: 'Inline Editing',
         description: 'Click any element to edit text, images, and styles in real-time.',
-        demo: 'inline',
       },
       {
         name: 'Color Picker',
         description: 'Intuitive color tools with palette suggestions and brand matching.',
-        demo: 'color',
       },
       {
         name: 'Drag & Drop',
         description: 'Rearrange sections and components with simple drag interactions.',
-        demo: 'drag',
       },
     ],
   },
@@ -63,193 +55,65 @@ const featureCategories = [
     id: 'components',
     title: 'Component Library',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
       </svg>
     ),
-    color: 'pink',
     features: [
       {
         name: 'Hero Sections',
-        description: '20+ hero variants including video backgrounds, 3D effects, and animations.',
-        demo: 'hero',
+        description: '20+ hero variants including video backgrounds and animations.',
       },
       {
         name: 'Feature Grids',
         description: 'Flexible grid layouts with icons, images, and interactive states.',
-        demo: 'grid',
       },
       {
         name: 'Pricing Tables',
-        description: 'Conversion-optimized pricing components with toggle and comparison modes.',
-        demo: 'pricing',
+        description: 'Conversion-optimized pricing components with toggle modes.',
       },
     ],
   },
 ]
-
-// Demo component for each feature
-function FeatureDemo({ type }: { type: string }) {
-  const [active, setActive] = useState(false)
-  
-  switch (type) {
-    case 'prompt':
-      return (
-        <div className="bg-void rounded-xl p-6 border border-line">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs font-mono text-flux-cyan">Prompt Input</span>
-          </div>
-          <div className="space-y-3">
-            <input
-              type="text"
-              placeholder="Describe your website..."
-              className="w-full bg-ash border border-line rounded-lg px-4 py-3 text-sm focus:border-flux-cyan outline-none transition-colors"
-              onFocus={() => setActive(true)}
-              onBlur={() => setActive(false)}
-            />
-            {active && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="space-y-2"
-              >
-                <div className="h-2 bg-flux-cyan/20 rounded animate-pulse" />
-                <div className="h-2 bg-flux-purple/20 rounded w-3/4 animate-pulse delay-100" />
-                <div className="mt-3 p-3 border border-green-500/30 rounded-lg bg-green-500/10">
-                  <span className="text-xs text-green-400">✓ Site generated successfully</span>
-                </div>
-              </motion.div>
-            )}
-          </div>
-        </div>
-      )
-    
-    case 'color':
-      const colors = ['#00f5d4', '#9b5de5', '#f72585', '#ffc300', '#00bbf9']
-      const [selectedColor, setSelectedColor] = useState(colors[0])
-      
-      return (
-        <div className="bg-void rounded-xl p-6 border border-line">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs font-mono text-flux-purple">Color Palette</span>
-          </div>
-          <div className="flex gap-3 mb-4">
-            {colors.map((color) => (
-              <button
-                key={color}
-                onClick={() => setSelectedColor(color)}
-                className={`w-10 h-10 rounded-xl transition-all ${
-                  selectedColor === color ? 'ring-2 ring-offset-2 ring-offset-void scale-110' : ''
-                }`}
-                style={{ backgroundColor: color }}
-              />
-            ))}
-          </div>
-          <div 
-            className="h-24 rounded-lg flex items-center justify-center text-sm font-medium transition-colors duration-300"
-            style={{ backgroundColor: selectedColor + '20', color: selectedColor }}
-          >
-            Preview Color
-          </div>
-        </div>
-      )
-    
-    case 'inline':
-      const [text, setText] = useState('Click to edit this text')
-      const [isEditing, setIsEditing] = useState(false)
-      
-      return (
-        <div className="bg-void rounded-xl p-6 border border-line">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs font-mono text-flux-pink">Inline Editor</span>
-          </div>
-          <div 
-            className={`p-4 rounded-lg border-2 transition-all cursor-text ${
-              isEditing ? 'border-flux-cyan bg-flux-cyan/5' : 'border-transparent hover:border-line'
-            }`}
-            onClick={() => setIsEditing(true)}
-          >
-            {isEditing ? (
-              <input
-                type="text"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                onBlur={() => setIsEditing(false)}
-                className="w-full bg-transparent outline-none text-bone"
-                autoFocus
-              />
-            ) : (
-              <span className="text-bone">{text}</span>
-            )}
-          </div>
-          <p className="mt-3 text-xs text-fume">↑ Click the text above to edit</p>
-        </div>
-      )
-    
-    default:
-      return (
-        <div className="bg-void rounded-xl p-6 border border-line flex items-center justify-center h-48">
-          <div className="text-center">
-            <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-flux-cyan to-flux-purple flex items-center justify-center">
-              <svg className="w-6 h-6 text-void" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <p className="text-sm text-fume">Interactive Demo</p>
-          </div>
-        </div>
-      )
-  }
-}
 
 export default function Showcase() {
   const [activeCategory, setActiveCategory] = useState(featureCategories[0].id)
   const [activeFeature, setActiveFeature] = useState(0)
 
   const currentCategory = featureCategories.find(c => c.id === activeCategory) || featureCategories[0]
-  
-  const colorMap: Record<string, string> = {
-    cyan: 'from-flux-cyan to-flux-blue',
-    purple: 'from-flux-purple to-flux-pink',
-    pink: 'from-flux-pink to-flux-orange',
-  }
 
   return (
-    <div className="min-h-screen bg-void">
+    <div className="min-h-screen bg-black">
       <NavBar />
       
-      {/* Header */}
-      <section className="pt-32 pb-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-flux-cyan/10 via-transparent to-transparent pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto relative z-10">
+      {/* Header - COMPACT */}
+      <section className="pt-16 pb-12 px-6">
+        <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center max-w-2xl mx-auto"
           >
-            <span className="eyebrow inline-block mb-4">Features Showcase</span>
-            <h1 className="font-display text-display-xl font-bold tracking-tight mb-6">
-              Explore every feature in{' '}
-              <span className="gradient-text">detail</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Features Showcase</span>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">
+              Explore every feature in detail
             </h1>
-            <p className="text-lg text-fume leading-relaxed">
-              Dive deep into what makes FluxWith powerful. Try interactive demos, 
-              see real examples, and understand how each feature works.
+            <p className="mt-2 text-sm text-gray-400 leading-relaxed">
+              Dive deep into what makes FluxWith powerful. See real examples 
+              and understand how each feature works.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Main showcase area */}
-      <section className="pb-28 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-[280px_1fr] gap-8">
+      {/* Main showcase area - COMPACT */}
+      <section className="pb-12 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-[240px_1fr] gap-6">
             {/* Sidebar navigation */}
             <div className="hidden lg:block">
-              <div className="sticky top-24 space-y-2">
+              <div className="sticky top-20 space-y-1">
                 {featureCategories.map((category) => (
                   <button
                     key={category.id}
@@ -257,13 +121,13 @@ export default function Showcase() {
                       setActiveCategory(category.id)
                       setActiveFeature(0)
                     }}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all ${
+                    className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-left transition-all duration-150 ${
                       activeCategory === category.id
-                        ? `bg-gradient-to-r ${colorMap[category.color]} text-void`
-                        : 'hover:bg-ash-light text-fume hover:text-bone'
+                        ? 'bg-white text-black'
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
                     }`}
                   >
-                    <span className={activeCategory === category.id ? 'text-void' : ''}>
+                    <span className={activeCategory === category.id ? 'text-black' : ''}>
                       {category.icon}
                     </span>
                     <span className="font-medium text-sm">{category.title}</span>
@@ -281,10 +145,10 @@ export default function Showcase() {
                     setActiveCategory(category.id)
                     setActiveFeature(0)
                   }}
-                  className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                     activeCategory === category.id
-                      ? `bg-gradient-to-r ${colorMap[category.color]} text-void`
-                      : 'bg-ash text-fume'
+                      ? 'bg-white text-black'
+                      : 'bg-white/10 text-gray-400'
                   }`}
                 >
                   {category.title}
@@ -297,32 +161,32 @@ export default function Showcase() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCategory}
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: 15 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: 0, x: -15 }}
+                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 >
                   {/* Category header */}
-                  <div className="mb-8">
-                    <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r ${colorMap[currentCategory.color]} text-void mb-4`}>
+                  <div className="mb-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-black mb-3">
                       {currentCategory.icon}
-                      <span className="font-semibold text-sm">{currentCategory.title}</span>
+                      <span className="font-semibold text-xs">{currentCategory.title}</span>
                     </div>
-                    <h2 className="font-display text-3xl font-bold">
+                    <h2 className="text-xl font-bold text-white">
                       Powerful tools for modern builders
                     </h2>
                   </div>
 
                   {/* Feature tabs */}
-                  <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+                  <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
                     {currentCategory.features.map((feature, index) => (
                       <button
                         key={feature.name}
                         onClick={() => setActiveFeature(index)}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
+                        className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all duration-150 ${
                           activeFeature === index
-                            ? 'bg-flux-cyan text-void'
-                            : 'bg-ash text-fume hover:text-bone hover:bg-ash-light'
+                            ? 'bg-white text-black'
+                            : 'bg-white/10 text-gray-400 hover:bg-white/20'
                         }`}
                       >
                         {feature.name}
@@ -331,18 +195,18 @@ export default function Showcase() {
                   </div>
 
                   {/* Feature content */}
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid md:grid-cols-2 gap-6">
                     {/* Description */}
                     <div>
-                      <h3 className="font-display text-2xl font-semibold mb-4">
+                      <h3 className="text-lg font-semibold text-white mb-3">
                         {currentCategory.features[activeFeature].name}
                       </h3>
-                      <p className="text-fume leading-relaxed mb-6">
+                      <p className="text-sm text-gray-400 leading-relaxed mb-4">
                         {currentCategory.features[activeFeature].description}
                       </p>
                       
                       {/* Feature details list */}
-                      <ul className="space-y-3">
+                      <ul className="space-y-2">
                         {[
                           'Intuitive interface with zero learning curve',
                           'Real-time preview as you make changes',
@@ -350,9 +214,9 @@ export default function Showcase() {
                           'Undo/redo history for all actions',
                           'Export settings for team consistency',
                         ].map((item) => (
-                          <li key={item} className="flex items-start gap-3 text-sm text-fume-light">
-                            <svg className="w-5 h-5 text-flux-cyan flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          <li key={item} className="flex items-start gap-2 text-xs text-gray-400">
+                            <svg className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                             </svg>
                             {item}
                           </li>
@@ -361,28 +225,28 @@ export default function Showcase() {
 
                       <Link
                         to="/signup"
-                        className="btn-primary inline-flex mt-8 items-center gap-2"
+                        className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black hover:bg-gray-100 active:scale-[0.96] transition-all duration-150 ease-out"
                       >
                         Try it now
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </Link>
                     </div>
 
-                    {/* Interactive demo */}
+                    {/* Demo placeholder */}
                     <div>
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={activeFeature}
-                          initial={{ opacity: 0, scale: 0.95 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.95 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <FeatureDemo type={currentCategory.features[activeFeature].demo} />
-                        </motion.div>
-                      </AnimatePresence>
+                      <div className="rounded-lg border border-white/10 bg-white/5 p-6 flex items-center justify-center h-48">
+                        <div className="text-center">
+                          <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center">
+                            <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <p className="text-sm text-gray-500">Interactive Demo</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -392,20 +256,20 @@ export default function Showcase() {
         </div>
       </section>
 
-      {/* CTA section */}
-      <section className="px-6 pb-28">
-        <div className="max-w-7xl mx-auto">
-          <div className="liquid-glass rounded-3xl p-12 text-center">
-            <h2 className="font-display text-3xl font-bold mb-4">
+      {/* CTA section - WHITE FOR CONTRAST */}
+      <section className="px-6 pb-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="rounded-lg bg-white p-8 text-center">
+            <h2 className="text-xl font-bold text-black mb-2">
               Ready to experience these features?
             </h2>
-            <p className="text-fume mb-8 max-w-xl mx-auto">
+            <p className="text-sm text-gray-600 mb-4 max-w-md mx-auto">
               Start building for free today and see how FluxWith can transform your workflow.
             </p>
-            <Link to="/signup" className="btn-primary inline-flex items-center gap-2">
+            <Link to="/signup" className="inline-flex items-center gap-2 rounded-lg bg-black px-6 py-2.5 text-sm font-semibold text-white hover:bg-gray-800 active:scale-[0.96] transition-all duration-150 ease-out">
               Get started free
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </Link>
           </div>

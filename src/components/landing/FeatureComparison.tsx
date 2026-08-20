@@ -35,7 +35,7 @@ const comparisonData = {
       builders: { text: 'Locked in', included: false },
     },
     {
-      feature: 'AI generation',
+      feature: 'AI building',
       fluxwith: { text: 'Built-in', included: true },
       traditional: { text: 'No', included: false },
       builders: { text: 'Limited', included: false },

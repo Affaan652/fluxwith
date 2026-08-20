@@ -81,7 +81,7 @@ export default function ForgeStack() {
                   <span className="text-sm font-medium text-white">{layer.label}</span>
                 </div>
 
-                {/* Generating indicator for first item */}
+                {/* Building indicator for first item */}
                 {index === 0 && (
                   <motion.div
                     initial={{ width: '0%' }}
@@ -114,7 +114,7 @@ export default function ForgeStack() {
           >
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-xs text-green-400 font-medium">Site generated</span>
+              <span className="text-xs text-green-400 font-medium">Site built</span>
             </div>
             <span className="text-xs text-fume">5 sections • 2.4s</span>
           </motion.div>
@@ -133,7 +133,7 @@ export default function ForgeStack() {
             <svg className="w-4 h-4 text-flux-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <span className="font-medium">AI Generated</span>
+            <span className="font-medium">AI Built</span>
           </div>
         </div>
       </motion.div>

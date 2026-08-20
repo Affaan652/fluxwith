@@ -23,22 +23,20 @@ const partnerTypes = [
 
 export default function Partners() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       <NavBar />
       
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-gray-50 to-white">
-        <div className="mx-auto max-w-7xl text-center">
+      {/* Hero - COMPACT */}
+      <section className="pt-16 pb-12 px-6">
+        <div className="mx-auto max-w-6xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-sm font-semibold uppercase tracking-wider text-gray-500">Company</span>
-            <h1 className="mt-3 text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Partner with us
-            </h1>
-            <p className="mt-6 text-xl leading-relaxed text-gray-600 max-w-2xl mx-auto">
+            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Company</span>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">Partner with us</h1>
+            <p className="mt-2 text-sm text-gray-400 max-w-xl mx-auto">
               Join our partner program and grow together. We offer flexible partnership 
               models designed for businesses of all sizes.
             </p>
@@ -46,26 +44,26 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Partner types */}
-      <section className="py-24 px-6">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 lg:gap-12 lg:grid-cols-3">
+      {/* Partner types - COMPACT */}
+      <section className="py-12 px-6">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-6 lg:grid-cols-3">
             {partnerTypes.map((partner, index) => (
               <motion.div
                 key={partner.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="rounded-2xl border border-gray-200 p-8 hover:border-black hover:shadow-xl transition-all"
+                transition={{ duration: 0.3, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                className="rounded-lg border border-white/10 p-6 bg-white/5 hover:border-white/20 transition-colors"
               >
-                <h2 className="text-2xl font-bold text-gray-900">{partner.title}</h2>
-                <p className="mt-3 text-gray-600">{partner.description}</p>
+                <h2 className="text-lg font-bold text-white">{partner.title}</h2>
+                <p className="mt-2 text-xs text-gray-400">{partner.description}</p>
                 
-                <ul className="mt-6 space-y-3">
+                <ul className="mt-4 space-y-2">
                   {partner.benefits.map((benefit) => (
-                    <li key={benefit} className="flex items-center gap-3 text-sm text-gray-700">
-                      <svg className="h-5 w-5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <li key={benefit} className="flex items-center gap-2 text-xs text-gray-300">
+                      <svg className="h-4 w-4 text-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       {benefit}
@@ -75,10 +73,10 @@ export default function Partners() {
 
                 <Link
                   to="/contact"
-                  className="mt-8 inline-flex items-center gap-2 rounded-lg bg-black px-6 py-3 text-sm font-medium text-white hover:bg-gray-800 transition-colors"
+                  className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-xs font-medium text-black hover:bg-gray-100 active:scale-[0.96] transition-all duration-150 ease-out"
                 >
                   Apply now
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </Link>
@@ -88,10 +86,10 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="bg-gray-50 py-24 px-6">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {/* Stats - COMPACT */}
+      <section className="bg-white/5 py-12 px-6 border-y border-white/10">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
               { value: '100+', label: 'Active Partners' },
               { value: '$2M+', label: 'Partner Revenue' },
@@ -99,30 +97,30 @@ export default function Partners() {
               { value: '98%', label: 'Satisfaction Rate' },
             ].map((stat) => (
               <div key={stat.label}>
-                <div className="text-4xl font-bold text-gray-900">{stat.value}</div>
-                <div className="mt-2 text-sm text-gray-500">{stat.label}</div>
+                <div className="text-2xl font-bold text-white tabular-nums">{stat.value}</div>
+                <div className="mt-1 text-xs text-gray-500">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6">
-        <div className="mx-auto max-w-3xl text-center">
+      {/* CTA - WHITE FOR CONTRAST */}
+      <section className="bg-white py-12 px-6">
+        <div className="mx-auto max-w-xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="text-3xl font-bold text-gray-900">Ready to partner?</h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-2xl font-bold text-black">Ready to partner?</h2>
+            <p className="mt-2 text-sm text-gray-600">
               Let's discuss how we can work together to achieve mutual success.
             </p>
             <Link
               to="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-xl bg-black px-8 py-4 text-sm font-semibold text-white hover:bg-gray-800 transition-colors"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-black px-6 py-2.5 text-sm font-semibold text-white hover:bg-gray-800 active:scale-[0.96] transition-all duration-150 ease-out"
             >
               Contact our partnerships team
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

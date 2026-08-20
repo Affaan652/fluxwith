@@ -15,7 +15,7 @@ const openings = [
     department: 'AI Research',
     location: 'San Francisco, CA',
     type: 'Full-time',
-    description: 'Develop and improve our AI models for website generation and design understanding.',
+    description: 'Develop and improve our AI models for website building and design understanding.',
   },
   {
     title: 'Product Designer',
@@ -46,22 +46,20 @@ const benefits = [
 
 export default function Careers() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       <NavBar />
       
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-gray-50 to-white">
-        <div className="mx-auto max-w-7xl text-center">
+      {/* Hero - COMPACT */}
+      <section className="pt-16 pb-12 px-6">
+        <div className="mx-auto max-w-6xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-sm font-semibold uppercase tracking-wider text-gray-500">Company</span>
-            <h1 className="mt-3 text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Join our team
-            </h1>
-            <p className="mt-6 text-xl leading-relaxed text-gray-600 max-w-2xl mx-auto">
+            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Company</span>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">Join our team</h1>
+            <p className="mt-2 text-sm text-gray-400 max-w-xl mx-auto">
               Help us build the future of web creation. We're looking for passionate 
               people who want to make a real impact.
             </p>
@@ -69,13 +67,13 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="py-16 px-6 border-t border-gray-100">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
+      {/* Benefits - COMPACT */}
+      <section className="py-8 px-6 border-t border-white/10">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">
             {benefits.map((benefit) => (
-              <div key={benefit} className="flex items-center gap-2 text-sm text-gray-600">
-                <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div key={benefit} className="flex items-center gap-2 text-xs text-gray-400">
+                <svg className="h-4 w-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 {benefit}
@@ -85,53 +83,53 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* Open positions */}
-      <section className="py-24 px-6">
+      {/* Open positions - COMPACT */}
+      <section className="py-12 px-6">
         <div className="mx-auto max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="mb-16"
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-8"
           >
-            <h2 className="text-3xl font-bold text-gray-900">Open positions</h2>
-            <p className="mt-2 text-gray-600">{openings.length} roles available</p>
+            <h2 className="text-xl font-bold text-white">Open positions</h2>
+            <p className="text-xs text-gray-500 mt-1">{openings.length} roles available</p>
           </motion.div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {openings.map((job, index) => (
               <motion.div
                 key={job.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group rounded-xl border border-gray-200 p-6 hover:border-black hover:shadow-lg transition-all cursor-pointer"
+                transition={{ duration: 0.3, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                className="group rounded-lg border border-white/10 p-5 hover:border-white/20 transition-colors cursor-pointer"
               >
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-black transition-colors">
+                    <h3 className="text-base font-semibold text-white group-hover:text-white transition-colors">
                       {job.title}
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500">{job.department}</p>
-                    <p className="mt-3 text-sm text-gray-600">{job.description}</p>
+                    <p className="text-xs text-gray-500 mt-0.5">{job.department}</p>
+                    <p className="text-xs text-gray-400 mt-2">{job.description}</p>
                   </div>
                   
                   <div className="shrink-0 flex flex-wrap gap-2">
-                    <span className="px-3 py-1 rounded-full bg-gray-100 text-xs font-medium text-gray-600">
+                    <span className="px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-medium text-gray-300">
                       {job.location}
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-black text-xs font-medium text-white">
+                    <span className="px-2 py-0.5 rounded-full bg-white text-[10px] font-medium text-black">
                       {job.type}
                     </span>
                   </div>
                 </div>
                 
-                <div className="mt-4 pt-4 border-t border-gray-100 flex justify-end">
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-black group-hover:underline">
+                <div className="mt-3 pt-3 border-t border-white/10 flex justify-end">
+                  <span className="inline-flex items-center gap-1 text-xs font-medium text-gray-300 group-hover:text-white transition-colors">
                     Apply now
-                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </span>
@@ -141,14 +139,14 @@ export default function Careers() {
           </div>
 
           {/* No role? */}
-          <div className="mt-16 rounded-2xl bg-gray-50 p-8 md:p-12 text-center">
-            <h3 className="text-2xl font-bold text-gray-900">Don't see your role?</h3>
-            <p className="mt-2 text-gray-600">
+          <div className="mt-10 rounded-lg bg-white/5 border border-white/10 p-6 text-center">
+            <h3 className="text-lg font-bold text-white">Don't see your role?</h3>
+            <p className="mt-1 text-sm text-gray-400">
               We're always interested in hearing from talented people. Send us your resume.
             </p>
             <a
               href="/contact"
-              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-black px-6 py-3 text-sm font-medium text-white hover:bg-gray-800 transition-colors"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-xs font-medium text-black hover:bg-gray-100 active:scale-[0.96] transition-all duration-150 ease-out"
             >
               Get in touch
             </a>

@@ -25,8 +25,8 @@ export default function Privacy() {
       <section>
         <h2 className="font-display text-lg font-medium text-bone">2. Third-party services</h2>
         <p className="mt-2 text-fume">
-          When you generate a site, your prompt is sent to and processed by the Google Gemini
-          API to produce the layout and copy. Your account data and generated sites are hosted
+          When you build a site, your prompt is sent to and processed by the Google Gemini
+          API to produce the layout and copy. Your account data and built sites are hosted
           and served through Supabase (auth and database) and Netlify (hosting and functions).
           These providers process data on our behalf under their own privacy and security terms.
         </p>

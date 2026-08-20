@@ -47,7 +47,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-void">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-line/50 bg-void/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -195,7 +195,7 @@ export default function Dashboard() {
               <h3 className="font-semibold mb-4">Quick Actions</h3>
               <div className="space-y-2">
                 {[
-                  { label: 'Generate new site', icon: 'sparkles', href: '/' },
+                  { label: 'Build new site', icon: 'sparkles', href: '/' },
                   { label: 'View templates', icon: 'clipboard', href: '/showcase' },
                   { label: 'Manage domains', icon: 'globe', href: '#' },
                   { label: 'View analytics', icon: 'chart', href: '#' },
@@ -239,7 +239,7 @@ export default function Dashboard() {
               
               <div className="mb-4">
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="text-fume">Site generations</span>
+                  <span className="text-fume">Site builds</span>
                   <span className="font-medium">3 / 5</span>
                 </div>
                 <div className="h-2 bg-ash rounded-full overflow-hidden">
@@ -252,7 +252,7 @@ export default function Dashboard() {
                   to="/#pricing"
                   className="text-sm text-flux-cyan hover:text-flux-cyan-dim transition-colors flex items-center gap-1"
                 >
-                  Upgrade for unlimited generations
+                  Upgrade for unlimited builds
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
