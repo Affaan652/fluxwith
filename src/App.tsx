@@ -29,6 +29,7 @@ import Roadmap from './pages/Roadmap'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
+import Builder from './pages/Builder'
 // Legal pages
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
@@ -87,6 +88,16 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Protected builder workspace */}
+            <Route
+              path="/builder"
+              element={
+                <ProtectedRoute>
+                  <Builder />
                 </ProtectedRoute>
               }
             />
