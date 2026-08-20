@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'motion/react'
+import { Sparkles, Pencil, Box, ArrowRight, Check } from 'lucide-react'
 import NavBar from '../components/landing/NavBar'
 import Footer from '../components/landing/Footer'
 
@@ -8,11 +8,7 @@ const featureCategories = [
   {
     id: 'building',
     title: 'AI Building',
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-      </svg>
-    ),
+    icon: Sparkles,
     features: [
       {
         name: 'Prompt-to-Site',
@@ -31,11 +27,7 @@ const featureCategories = [
   {
     id: 'editor',
     title: 'Visual Editor',
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-      </svg>
-    ),
+    icon: Pencil,
     features: [
       {
         name: 'Inline Editing',
@@ -54,11 +46,7 @@ const featureCategories = [
   {
     id: 'components',
     title: 'Component Library',
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
-      </svg>
-    ),
+    icon: Box,
     features: [
       {
         name: 'Hero Sections',
@@ -83,61 +71,113 @@ export default function Showcase() {
   const currentCategory = featureCategories.find(c => c.id === activeCategory) || featureCategories[0]
 
   return (
-    <div className="min-h-screen bg-black">
+    <div style={{ minHeight: '100vh', background: '#0a0a0a' }}>
       <NavBar />
       
-      {/* Header - COMPACT */}
-      <section className="pt-16 pb-12 px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center max-w-2xl mx-auto"
-          >
-            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Features Showcase</span>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">
-              Explore every feature in detail
-            </h1>
-            <p className="mt-2 text-sm text-gray-400 leading-relaxed">
-              Dive deep into what makes FluxWith powerful. See real examples 
-              and understand how each feature works.
-            </p>
-          </motion.div>
+      {/* Header */}
+      <section style={{ padding: '80px 24px 40px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
+          <span style={{ 
+            fontSize: 12, 
+            fontWeight: 600, 
+            color: '#666', 
+            textTransform: 'uppercase', 
+            letterSpacing: 1.5 
+          }}>
+            Features Showcase
+          </span>
+          <h1 style={{ 
+            fontSize: 'clamp(32px, 4vw, 48px)', 
+            fontWeight: 700, 
+            color: '#fff', 
+            marginTop: 8, 
+            marginBottom: 16,
+            letterSpacing: '-0.02em'
+          }}>
+            Explore every feature
+          </h1>
+          <p style={{ 
+            fontSize: 15, 
+            color: '#888', 
+            maxWidth: 480,
+            margin: '0 auto',
+            lineHeight: 1.6
+          }}>
+            Dive deep into what makes FluxWith powerful. See real examples and understand how each feature works.
+          </p>
         </div>
       </section>
 
-      {/* Main showcase area - COMPACT */}
-      <section className="pb-12 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-[240px_1fr] gap-6">
-            {/* Sidebar navigation */}
-            <div className="hidden lg:block">
-              <div className="sticky top-20 space-y-1">
-                {featureCategories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => {
-                      setActiveCategory(category.id)
-                      setActiveFeature(0)
-                    }}
-                    className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-left transition-all duration-150 ${
-                      activeCategory === category.id
-                        ? 'bg-white text-black'
-                        : 'text-gray-400 hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    <span className={activeCategory === category.id ? 'text-black' : ''}>
-                      {category.icon}
-                    </span>
-                    <span className="font-medium text-sm">{category.title}</span>
-                  </button>
-                ))}
+      {/* Main showcase area */}
+      <section style={{ padding: '40px 24px 80px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '200px 1fr',
+            gap: 32,
+          }}>
+            {/* Sidebar navigation - Desktop only */}
+            <div className="sidebar-nav">
+              <div style={{
+                position: 'sticky',
+                top: 80,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 4,
+              }}>
+                {featureCategories.map((category) => {
+                  const Icon = category.icon
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => {
+                        setActiveCategory(category.id)
+                        setActiveFeature(0)
+                      }}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 10,
+                        padding: '10px 14px',
+                        borderRadius: 8,
+                        background: activeCategory === category.id ? '#fff' : 'transparent',
+                        color: activeCategory === category.id ? '#000' : '#888',
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontSize: 13,
+                        fontWeight: 500,
+                        textAlign: 'left',
+                        transition: 'all 0.15s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        if (activeCategory !== category.id) {
+                          e.currentTarget.style.background = '#111'
+                          e.currentTarget.style.color = '#fff'
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (activeCategory !== category.id) {
+                          e.currentTarget.style.background = 'transparent'
+                          e.currentTarget.style.color = '#888'
+                        }
+                      }}
+                    >
+                      <Icon size={16} />
+                      {category.title}
+                    </button>
+                  )
+                })}
               </div>
             </div>
 
             {/* Mobile category tabs */}
-            <div className="lg:hidden flex gap-2 overflow-x-auto pb-4 -mx-6 px-6">
+            <div className="mobile-tabs" style={{
+              display: 'none',
+              gap: 8,
+              marginBottom: 24,
+              overflowX: 'auto',
+              paddingBottom: 8,
+            }}>
               {featureCategories.map((category) => (
                 <button
                   key={category.id}
@@ -145,11 +185,18 @@ export default function Showcase() {
                     setActiveCategory(category.id)
                     setActiveFeature(0)
                   }}
-                  className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                    activeCategory === category.id
-                      ? 'bg-white text-black'
-                      : 'bg-white/10 text-gray-400'
-                  }`}
+                  style={{
+                    flexShrink: 0,
+                    padding: '8px 16px',
+                    borderRadius: 20,
+                    background: activeCategory === category.id ? '#fff' : '#111',
+                    color: activeCategory === category.id ? '#000' : '#888',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: 12,
+                    fontWeight: 500,
+                    transition: 'all 0.15s ease',
+                  }}
                 >
                   {category.title}
                 </button>
@@ -158,125 +205,241 @@ export default function Showcase() {
 
             {/* Content area */}
             <div>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeCategory}
-                  initial={{ opacity: 0, x: 15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -15 }}
-                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  {/* Category header */}
-                  <div className="mb-6">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-black mb-3">
-                      {currentCategory.icon}
-                      <span className="font-semibold text-xs">{currentCategory.title}</span>
-                    </div>
-                    <h2 className="text-xl font-bold text-white">
-                      Powerful tools for modern builders
-                    </h2>
-                  </div>
+              {/* Category header */}
+              <div style={{ marginBottom: 28 }}>
+                <div style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  padding: '6px 14px',
+                  background: '#fff',
+                  borderRadius: 20,
+                  marginBottom: 16,
+                }}>
+                  {(() => {
+                    const Icon = currentCategory.icon
+                    return <Icon size={14} />
+                  })()}
+                  <span style={{ 
+                    fontSize: 12, 
+                    fontWeight: 600,
+                    color: '#000' 
+                  }}>
+                    {currentCategory.title}
+                  </span>
+                </div>
+                <h2 style={{ 
+                  fontSize: 22, 
+                  fontWeight: 700, 
+                  color: '#fff',
+                  letterSpacing: '-0.01em'
+                }}>
+                  Powerful tools for modern builders
+                </h2>
+              </div>
 
-                  {/* Feature tabs */}
-                  <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
-                    {currentCategory.features.map((feature, index) => (
-                      <button
-                        key={feature.name}
-                        onClick={() => setActiveFeature(index)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all duration-150 ${
-                          activeFeature === index
-                            ? 'bg-white text-black'
-                            : 'bg-white/10 text-gray-400 hover:bg-white/20'
-                        }`}
-                      >
-                        {feature.name}
-                      </button>
+              {/* Feature tabs */}
+              <div style={{ 
+                display: 'flex', 
+                gap: 8, 
+                marginBottom: 24,
+                overflowX: 'auto',
+                paddingBottom: 8,
+              }}>
+                {currentCategory.features.map((feature, index) => (
+                  <button
+                    key={feature.name}
+                    onClick={() => setActiveFeature(index)}
+                    style={{
+                      flexShrink: 0,
+                      padding: '8px 16px',
+                      borderRadius: 8,
+                      background: activeFeature === index ? '#fff' : '#111',
+                      color: activeFeature === index ? '#000' : '#888',
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontSize: 12,
+                      fontWeight: 500,
+                      transition: 'all 0.15s ease',
+                    }}
+                  >
+                    {feature.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* Feature content */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: 24,
+              }}>
+                {/* Description */}
+                <div>
+                  <h3 style={{ 
+                    fontSize: 18, 
+                    fontWeight: 600, 
+                    color: '#fff', 
+                    marginBottom: 12 
+                  }}>
+                    {currentCategory.features[activeFeature].name}
+                  </h3>
+                  <p style={{ 
+                    fontSize: 14, 
+                    color: '#888', 
+                    lineHeight: 1.6,
+                    marginBottom: 24 
+                  }}>
+                    {currentCategory.features[activeFeature].description}
+                  </p>
+                  
+                  {/* Feature details list */}
+                  <ul style={{ 
+                    listStyle: 'none', 
+                    padding: 0, 
+                    margin: 0, 
+                    marginBottom: 28 
+                  }}>
+                    {[
+                      'Intuitive interface with zero learning curve',
+                      'Real-time preview as you make changes',
+                      'Keyboard shortcuts for power users',
+                      'Undo/redo history for all actions',
+                      'Export settings for team consistency',
+                    ].map((item) => (
+                      <li key={item} style={{ 
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 10,
+                        padding: '8px 0',
+                        fontSize: 13,
+                        color: '#888',
+                      }}>
+                        <Check size={14} color="#4ade80" strokeWidth={2.5} />
+                        {item}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
-                  {/* Feature content */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {/* Description */}
-                    <div>
-                      <h3 className="text-lg font-semibold text-white mb-3">
-                        {currentCategory.features[activeFeature].name}
-                      </h3>
-                      <p className="text-sm text-gray-400 leading-relaxed mb-4">
-                        {currentCategory.features[activeFeature].description}
-                      </p>
-                      
-                      {/* Feature details list */}
-                      <ul className="space-y-2">
-                        {[
-                          'Intuitive interface with zero learning curve',
-                          'Real-time preview as you make changes',
-                          'Keyboard shortcuts for power users',
-                          'Undo/redo history for all actions',
-                          'Export settings for team consistency',
-                        ].map((item) => (
-                          <li key={item} className="flex items-start gap-2 text-xs text-gray-400">
-                            <svg className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+                  <Link
+                    to="/signup"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 8,
+                      background: '#fff',
+                      color: '#000',
+                      padding: '12px 24px',
+                      borderRadius: 8,
+                      textDecoration: 'none',
+                      fontWeight: 500,
+                      fontSize: 14,
+                      transition: 'all 0.15s ease',
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = '#e5e5e5'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = '#fff'}
+                  >
+                    Try it now
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
 
-                      <Link
-                        to="/signup"
-                        className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black hover:bg-gray-100 active:scale-[0.96] transition-all duration-150 ease-out"
-                      >
-                        Try it now
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </Link>
-                    </div>
-
-                    {/* Demo placeholder */}
-                    <div>
-                      <div className="rounded-lg border border-white/10 bg-white/5 p-6 flex items-center justify-center h-48">
-                        <div className="text-center">
-                          <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center">
-                            <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                          </div>
-                          <p className="text-sm text-gray-500">Interactive Demo</p>
-                        </div>
+                {/* Demo placeholder */}
+                <div>
+                  <div style={{
+                    borderRadius: 12,
+                    border: '1px solid #1f1f1f',
+                    background: '#111',
+                    padding: 48,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: 200,
+                  }}>
+                    <div style={{ textAlign: 'center' }}>
+                      <div style={{
+                        width: 56,
+                        height: 56,
+                        margin: '0 auto 16px',
+                        borderRadius: '50%',
+                        background: '#1a1a1a',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}>
+                        <Sparkles size={24} color="#555" />
                       </div>
+                      <p style={{ 
+                        fontSize: 14, 
+                        color: '#555' 
+                      }}>
+                        Interactive Demo
+                      </p>
                     </div>
                   </div>
-                </motion.div>
-              </AnimatePresence>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA section - WHITE FOR CONTRAST */}
-      <section className="px-6 pb-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="rounded-lg bg-white p-8 text-center">
-            <h2 className="text-xl font-bold text-black mb-2">
-              Ready to experience these features?
-            </h2>
-            <p className="text-sm text-gray-600 mb-4 max-w-md mx-auto">
-              Start building for free today and see how FluxWith can transform your workflow.
-            </p>
-            <Link to="/signup" className="inline-flex items-center gap-2 rounded-lg bg-black px-6 py-2.5 text-sm font-semibold text-white hover:bg-gray-800 active:scale-[0.96] transition-all duration-150 ease-out">
-              Get started free
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-          </div>
-        </div>
+      {/* CTA section */}
+      <section style={{ 
+        margin: '0 24px 60px',
+        background: '#fff',
+        borderRadius: 14,
+        padding: 48,
+        textAlign: 'center',
+      }}>
+        <h2 style={{ 
+          fontSize: 24, 
+          fontWeight: 700, 
+          color: '#000', 
+          marginBottom: 12 
+        }}>
+          Ready to experience these features?
+        </h2>
+        <p style={{ 
+          fontSize: 14, 
+          color: '#666', 
+          marginBottom: 24,
+          maxWidth: 400,
+          margin: '0 auto 24px'
+        }}>
+          Start building for free today and see how FluxWith can transform your workflow.
+        </p>
+        <Link 
+          to="/signup" 
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            background: '#000',
+            color: '#fff',
+            padding: '14px 28px',
+            borderRadius: 8,
+            textDecoration: 'none',
+            fontWeight: 500,
+            fontSize: 14,
+            transition: 'all 0.15s ease',
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.background = '#222'}
+          onMouseLeave={(e) => e.currentTarget.style.background = '#000'}
+        >
+          Get started free
+          <ArrowRight size={15} />
+        </Link>
       </section>
 
       <Footer />
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .sidebar-nav { display: none !important; }
+          .mobile-tabs { display: flex !important; }
+        }
+      `}</style>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Sparkles, ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   const [prompt, setPrompt] = useState('')
@@ -7,10 +8,10 @@ export default function Hero() {
   return (
     <section style={{
       background: '#0a0a0a',
-      padding: '80px 24px',
+      padding: '100px 24px 80px',
       textAlign: 'center',
     }}>
-      <div style={{ maxWidth: 800, margin: '0 auto' }}>
+      <div style={{ maxWidth: 720, margin: '0 auto' }}>
         {/* Badge */}
         <div style={{
           display: 'inline-flex',
@@ -21,34 +22,43 @@ export default function Hero() {
           border: '1px solid #222',
           borderRadius: 20,
           fontSize: 13,
-          color: '#a0a0a0',
-          marginBottom: 24,
+          color: '#888',
+          marginBottom: 28,
         }}>
-          <span style={{ width: 8, height: 8, background: '#22c55e', borderRadius: '50%' }}></span>
+          <Sparkles size={14} color="#3b82f6" />
           AI-Powered Website Builder
         </div>
 
         {/* Heading */}
         <h1 style={{
-          fontSize: 'clamp(36px, 5vw, 60px)',
+          fontSize: 'clamp(40px, 5.5vw, 64px)',
           fontWeight: 700,
           lineHeight: 1.1,
-          marginBottom: 20,
+          marginBottom: 24,
           color: '#fff',
+          letterSpacing: '-0.02em',
         }}>
           Build stunning websites
           <br />
-          <span style={{ color: '#a0a0a0' }}>in seconds, not weeks</span>
+          <span style={{ 
+            background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            in seconds, not weeks
+          </span>
         </h1>
 
         {/* Subtitle */}
         <p style={{
           fontSize: 18,
-          color: '#a0a0a0',
-          marginBottom: 32,
-          maxWidth: 500,
+          color: '#888',
+          marginBottom: 36,
+          maxWidth: 480,
           marginLeft: 'auto',
           marginRight: 'auto',
+          lineHeight: 1.6,
         }}>
           Describe your vision in plain English and watch FluxWith build production-ready websites instantly.
         </p>
@@ -58,12 +68,22 @@ export default function Hero() {
           display: 'flex',
           gap: 8,
           maxWidth: 520,
-          margin: '0 auto 24px',
+          margin: '0 auto 20px',
           background: '#111',
           border: '1px solid #222',
           borderRadius: 12,
           padding: '6px',
-        }}>
+          transition: 'border-color 0.2s ease',
+        }}
+        onFocus={(e) => {
+          // @ts-ignore
+          e.currentTarget.style.borderColor = '#333'
+        }}
+        onBlur={(e) => {
+          // @ts-ignore
+          e.currentTarget.style.borderColor = '#222'
+        }}
+        >
           <input
             type="text"
             value={prompt}
@@ -76,12 +96,15 @@ export default function Hero() {
               outline: 'none',
               color: '#fff',
               padding: '12px 16px',
-              fontSize: 14,
+              fontSize: 15,
             }}
           />
           <Link
             to="/signup"
             style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
               background: '#3b82f6',
               color: '#fff',
               padding: '12px 24px',
@@ -90,50 +113,49 @@ export default function Hero() {
               fontSize: 14,
               fontWeight: 500,
               whiteSpace: 'nowrap',
+              transition: 'background 0.2s ease',
             }}
+            onMouseEnter={(e) => e.currentTarget.style.background = '#2563eb'}
+            onMouseLeave={(e) => e.currentTarget.style.background = '#3b82f6'}
           >
-            Build Now →
+            Build Now
+            <ArrowRight size={16} />
           </Link>
         </div>
 
         {/* Example prompts */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 48 }}>
-          {['SaaS product landing page', 'E-commerce store', 'Portfolio site'].map((example) => (
+        <div style={{ 
+          display: 'flex', 
+          flexWrap: 'wrap', 
+          gap: 8, 
+          justifyContent: 'center', 
+          marginBottom: 0 
+        }}>
+          {['SaaS landing page', 'E-commerce store', 'Portfolio site'].map((example) => (
             <button
               key={example}
               onClick={() => setPrompt(example)}
               style={{
                 background: 'transparent',
                 border: '1px solid #222',
-                color: '#a0a0a0',
+                color: '#666',
                 padding: '6px 14px',
                 borderRadius: 20,
                 cursor: 'pointer',
                 fontSize: 13,
+                transition: 'all 0.15s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#444'
+                e.currentTarget.style.color = '#999'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#222'
+                e.currentTarget.style.color = '#666'
               }}
             >
               {example}
             </button>
-          ))}
-        </div>
-
-        {/* Stats */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 32,
-          borderTop: '1px solid #222',
-          paddingTop: 32,
-        }}>
-          {[
-            { value: '50K+', label: 'Websites Built' },
-            { value: '99.9%', label: 'Uptime SLA' },
-            { value: '\u003c 2s', label: 'Avg Load Time' },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <div style={{ fontSize: 28, fontWeight: 700, color: '#fff' }}>{stat.value}</div>
-              <div style={{ fontSize: 13, color: '#666', marginTop: 4 }}>{stat.label}</div>
-            </div>
           ))}
         </div>
       </div>
