@@ -6,7 +6,7 @@ import Footer from '../components/landing/Footer'
 
 const plans = [
   {
-    name: 'Starter',
+    name: 'Free',
     price: { monthly: '$0', annual: '$0' },
     period: 'forever',
     description: 'Perfect for trying FluxWith and launching your first project.',
@@ -47,7 +47,7 @@ const plans = [
     badge: 'Most Popular',
   },
   {
-    name: 'Enterprise',
+    name: 'Studio',
     price: { monthly: '$49', annual: '$39' },
     period: 'per month',
     description: 'For teams and organizations with advanced needs and dedicated support.',
@@ -57,13 +57,13 @@ const plans = [
       { text: 'White-label options', included: true },
       { text: 'Custom component creation', included: true },
       { text: 'Dedicated account manager', included: true },
-      { text: 'SLA guarantee (99.9%)', included: true },
+      { text: 'SLA (99.9% uptime)', included: true },
       { text: 'Unlimited API access', included: true },
       { text: 'Webhooks & integrations', included: true },
-      { text: 'On-premise deployment', included: true },
+      { text: 'On-premise deployment option', included: true },
     ],
     cta: 'Contact sales',
-    href: '#contact',
+    href: '/contact',
     highlighted: false,
   },
 ]
@@ -75,11 +75,11 @@ const faqs = [
   },
   {
     question: 'What payment methods do you accept?',
-    answer: 'We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and bank transfers for Enterprise customers. All payments are securely processed through Stripe.',
+    answer: 'We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and bank transfers for Studio customers. All payments are securely processed through Stripe.',
   },
   {
     question: 'Is there a refund policy?',
-    answer: 'We offer a 14-day money-back guarantee for all paid plans. If you\'re not satisfied, contact support within 14 days of your purchase for a full refund — no questions asked.',
+    answer: 'We offer a 14-day refund window for all paid plans. If you\'re not satisfied, contact support within 14 days of your purchase for a full refund — no questions asked.',
   },
   {
     question: 'What happens to my sites if I cancel?',
@@ -92,48 +92,53 @@ export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-[#0b0c10]">
       <NavBar />
       
-      {/* Hero section - COMPACT */}
-      <section className="pt-16 pb-12 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* Hero section */}
+      <section className="pt-16 pb-12 px-6 relative">
+        {/* Ambient glow */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[300px] w-[500px] rounded-full bg-[#5eead4]/3 blur-[100px]" />
+        </div>
+
+        <div className="relative max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="text-center max-w-2xl mx-auto"
           >
-            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Pricing</span>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">
+            <span className="eyebrow">Pricing</span>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
               Simple, transparent pricing
             </h1>
-            <p className="mt-2 text-sm text-gray-400 leading-relaxed">
+            <p className="mt-2 text-sm text-[#8a8f98] leading-relaxed">
               Start free, scale as you grow. No hidden fees, no surprises.
             </p>
 
             {/* Billing toggle */}
             <div className="flex items-center justify-center gap-4 mt-6">
-              <span className={`text-xs font-medium transition-colors ${!annualBilling ? 'text-white' : 'text-gray-500'}`}>
+              <span className={`text-xs font-medium transition-colors ${!annualBilling ? 'text-white' : 'text-[#5a5e68]'}`}>
                 Monthly
               </span>
               <button
                 type="button"
                 onClick={() => setAnnualBilling(!annualBilling)}
                 className={`relative w-12 h-6 rounded-full transition-all duration-150 ${
-                  annualBilling ? 'bg-white' : 'bg-white/20'
+                  annualBilling ? 'bg-gradient-to-r from-[#5eead4] to-[#ff8a3d]' : 'bg-white/[0.15]'
                 }`}
                 aria-label="Toggle billing period"
               >
                 <span
-                  className={`absolute top-1 w-4 h-4 rounded-full bg-black shadow-md transition-transform duration-150 ${
-                    annualBilling ? 'left-7' : 'left-1'
+                  className={`absolute top-1 w-4 h-4 rounded-full shadow-md transition-transform duration-150 ${
+                    annualBilling ? 'left-7 bg-[#0b0c10]' : 'left-1 bg-white'
                   }`}
                 />
               </button>
-              <span className={`text-xs font-medium transition-colors ${annualBilling ? 'text-white' : 'text-gray-500'}`}>
+              <span className={`text-xs font-medium transition-colors ${annualBilling ? 'text-white' : 'text-[#5a5e68]'}`}>
                 Annual
-                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-green-500/20 text-green-400">
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#5eead4]/15 text-[#5eead4]">
                   Save 20%
                 </span>
               </span>
@@ -142,7 +147,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Pricing cards section - COMPACT */}
+      {/* Pricing cards section */}
       <section className="px-6 pb-12">
         <div className="max-w-6xl mx-auto">
           <div className="grid gap-4 md:grid-cols-3 items-start">
@@ -150,36 +155,37 @@ export default function PricingPage() {
               <motion.div
                 key={plan.name}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 className={`relative rounded-xl border p-6 transition-all duration-150 ${
                   plan.highlighted 
-                    ? 'border-white/30 bg-white/10 scale-[1.02]' 
-                    : 'border-white/10 bg-white/5 hover:border-white/20'
+                    ? 'border-white/[0.15] bg-white/[0.04] scale-[1.02] shadow-lg shadow-black/30' 
+                    : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.03]'
                 }`}
               >
                 {/* Popular badge */}
                 {plan.badge && (
-                  <div className="absolute top-0 right-0">
-                    <div className="bg-white text-black px-3 py-1 text-[10px] font-bold rounded-bl-lg">
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2">
+                    <span className="rounded-full bg-gradient-to-r from-[#5eead4] to-[#ff8a3d] px-2.5 py-0.5 text-[10px] font-semibold text-[#0b0c10]">
                       {plan.badge}
-                    </div>
+                    </span>
                   </div>
                 )}
 
                 {/* Plan header */}
                 <div className="mb-4">
-                  <h3 className="text-lg font-bold text-white">{plan.name}</h3>
-                  <p className="mt-1 text-xs text-gray-400">{plan.description}</p>
+                  <h3 className="text-lg font-bold text-white" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>{plan.name}</h3>
+                  <p className="mt-1 text-xs text-[#8a8f98]">{plan.description}</p>
                 </div>
 
                 {/* Price */}
-                <div className="mb-4 pb-4 border-b border-white/10">
+                <div className="mb-4 pb-4 border-b border-white/[0.06]">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold text-white tabular-nums">
+                    <span className="text-3xl font-bold text-white tabular-nums" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
                       {annualBilling ? plan.price.annual : plan.price.monthly}
                     </span>
-                    <span className="text-xs text-gray-500">/{plan.period}</span>
+                    <span className="text-xs text-[#5a5e68]">/{plan.period}</span>
                   </div>
                 </div>
 
@@ -188,15 +194,15 @@ export default function PricingPage() {
                   {plan.features.map((feature) => (
                     <li key={feature.text} className="flex items-start gap-2">
                       {feature.included ? (
-                        <svg className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <svg className="w-4 h-4 text-[#5eead4] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       ) : (
-                        <svg className="w-4 h-4 text-gray-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <svg className="w-4 h-4 text-[#5a5e68] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                       )}
-                      <span className={`text-xs ${feature.included ? 'text-gray-300' : 'text-gray-600'}`}>
+                      <span className={`text-xs ${feature.included ? 'text-[#c0c4cc]' : 'text-[#4a4e58]'}`}>
                         {feature.text}
                       </span>
                     </li>
@@ -208,8 +214,8 @@ export default function PricingPage() {
                   to={plan.href}
                   className={`block w-full text-center rounded-lg py-2.5 text-sm font-semibold transition-all duration-150 ease-out active:scale-[0.96] ${
                     plan.highlighted
-                      ? 'bg-white text-black hover:bg-gray-100'
-                      : 'bg-white/10 text-white hover:bg-white/20 border border-white/20'
+                      ? 'bg-gradient-to-r from-[#5eead4] to-[#ff8a3d] text-[#0b0c10] hover:shadow-lg hover:shadow-[#5eead4]/20'
+                      : 'bg-white/[0.08] text-white hover:bg-white/[0.12] border border-white/[0.08]'
                   }`}
                 >
                   {plan.cta}
@@ -226,23 +232,23 @@ export default function PricingPage() {
             transition={{ delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="mt-8 text-center"
           >
-            <p className="text-gray-400 text-sm mb-3">
+            <p className="text-[#8a8f98] text-sm mb-3">
               Need something custom? We offer tailored solutions for large teams.
             </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-5 py-2.5 text-sm font-medium text-white hover:border-white/40 transition-all duration-150 ease-out active:scale-[0.96]"
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/[0.12] px-5 py-2.5 text-sm font-medium text-white hover:border-[#5eead4]/30 transition-all duration-150 ease-out active:scale-[0.96]"
             >
               Contact our sales team
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* FAQ Section - COMPACT */}
+      {/* FAQ Section */}
       <section className="px-6 pb-12">
         <div className="max-w-2xl mx-auto">
           <motion.div
@@ -252,8 +258,8 @@ export default function PricingPage() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-8"
           >
-            <h2 className="text-xl font-bold text-white">Frequently asked questions</h2>
-            <p className="mt-2 text-sm text-gray-400">
+            <h2 className="text-xl font-bold text-white" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Frequently asked questions</h2>
+            <p className="mt-2 text-sm text-[#8a8f98]">
               Everything you need to know about our pricing and plans.
             </p>
           </motion.div>
@@ -266,7 +272,7 @@ export default function PricingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.03, ease: [0.16, 1, 0.3, 1] }}
-                className="rounded-lg border border-white/10 overflow-hidden"
+                className="rounded-xl border border-white/[0.06] bg-white/[0.02] overflow-hidden"
               >
                 <button
                   type="button"
@@ -277,7 +283,7 @@ export default function PricingPage() {
                   <svg
                     className={`w-4 h-4 flex-shrink-0 transition-transform ${
                       openFaq === index ? 'rotate-180' : ''
-                    } text-gray-400`}
+                    } text-[#8a8f98]`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -295,7 +301,7 @@ export default function PricingPage() {
                     transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
                     className="px-4 pb-4"
                   >
-                    <p className="text-xs text-gray-400 leading-relaxed">{faq.answer}</p>
+                    <p className="text-xs text-[#8a8f98] leading-relaxed">{faq.answer}</p>
                   </motion.div>
                 )}
               </motion.div>
@@ -304,20 +310,20 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Trust badges - COMPACT */}
+      {/* Trust badges */}
       <section className="px-6 pb-12">
         <div className="max-w-4xl mx-auto">
-          <div className="rounded-xl border border-white/10 bg-white/5 p-6 md:p-8">
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 md:p-8 backdrop-blur-sm">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {[
-                { value: '14-day', label: 'Money-back guarantee' },
+                { value: '14-day', label: 'Refund window' },
                 { value: 'SSL + SOC2', label: 'Enterprise security' },
                 { value: '99.9%', label: 'Uptime SLA' },
                 { value: '24/7', label: 'Support availability' },
               ].map((item) => (
                 <div key={item.label}>
-                  <div className="font-semibold text-base text-white tabular-nums">{item.value}</div>
-                  <div className="text-xs text-gray-500 mt-1">{item.label}</div>
+                  <div className="font-semibold text-base text-white tabular-nums" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>{item.value}</div>
+                  <div className="text-xs text-[#5a5e68] mt-1">{item.label}</div>
                 </div>
               ))}
             </div>

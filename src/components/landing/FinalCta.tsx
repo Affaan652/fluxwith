@@ -1,71 +1,59 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'motion/react'
 
 export default function FinalCta() {
   return (
-    <section className="bg-white py-16">
-      <div className="mx-auto max-w-6xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto max-w-2xl text-center"
-        >
-          <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl text-balance">
-            Ready to build something amazing?
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-gray-600">
-            Join thousands of creators who are already using FluxWith to bring their ideas to life.
-            Start for free — no credit card required.
-          </p>
-          
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link
-              to="/signup"
-              className="inline-flex items-center gap-2 rounded-lg bg-black px-7 py-3 text-sm font-semibold text-white transition-all hover:bg-gray-800 active:scale-[0.96] duration-150 ease-out"
-            >
-              Get started free
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-            <Link
-              to="/showcase"
-              className="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-7 py-3 text-sm font-semibold text-black transition-all hover:border-gray-300 hover:bg-gray-50 active:scale-[0.96] duration-150 ease-out"
-            >
-              View examples
-            </Link>
-          </div>
+    <section style={{ background: '#0a0a0a', padding: '80px 24px' }}>
+      <div style={{ maxWidth: 600, margin: '0 auto', textAlign: 'center' }}>
+        <h2 style={{ fontSize: 32, fontWeight: 700, color: '#fff', marginBottom: 16 }}>
+          Ready to build something amazing?
+        </h2>
+        <p style={{ fontSize: 16, color: '#a0a0a0', marginBottom: 32 }}>
+          Join thousands of creators who are already using FluxWith. Start for free — no credit card required.
+        </p>
+        
+        <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Link
+            to="/signup"
+            style={{
+              background: '#3b82f6',
+              color: '#fff',
+              padding: '14px 28px',
+              borderRadius: 8,
+              textDecoration: 'none',
+              fontWeight: 500,
+            }}
+          >
+            Get started free →
+          </Link>
+          <Link
+            to="/showcase"
+            style={{
+              background: 'transparent',
+              color: '#fff',
+              padding: '14px 28px',
+              borderRadius: 8,
+              textDecoration: 'none',
+              border: '1px solid #333',
+            }}
+          >
+            View examples
+          </Link>
+        </div>
 
-          {/* Social proof - compact */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-gray-500">
-            <div className="flex items-center gap-1.5">
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-              </svg>
-              <span>SSL Security</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-              </svg>
-              <span>Lightning Fast</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A48.132 48.132 0 0112 15.5c-2.114 0-4.198-.137-6.233-.408a2.197 2.197 0 01-.673-.38m0 0V13.5a2.18 2.18 0 01.75-1.661V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m-6 8.006V13.5a2.18 2.18 0 00.75-1.661V8.706c0-1.081.768-2.015 1.837-2.175a48.063 48.063 0 013.413-.387" />
-              </svg>
-              <span>99.9% Uptime</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-              </svg>
-              <span>Enterprise Security</span>
-            </div>
-          </div>
-        </motion.div>
+        {/* Trust badges */}
+        <div style={{ 
+          display: 'flex', 
+          gap: 32, 
+          justifyContent: 'center', 
+          marginTop: 48,
+          paddingTop: 32,
+          borderTop: '1px solid #222',
+          flexWrap: 'wrap',
+        }}>
+          {['SSL Security', 'Lightning Fast', '99.9% Uptime', 'Enterprise Security'].map((item) => (
+            <span key={item} style={{ color: '#666', fontSize: 13 }}>✓ {item}</span>
+          ))}
+        </div>
       </div>
     </section>
   )
