@@ -1,35 +1,73 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Sparkles, ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   const [prompt, setPrompt] = useState('')
 
   return (
     <section style={{
-      background: '#0a0a0a',
-      padding: '100px 24px 80px',
-      textAlign: 'center',
+      position: 'relative',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '80px 24px 60px',
+      overflow: 'hidden',
     }}>
-      <div style={{ maxWidth: 720, margin: '0 auto' }}>
-        {/* Badge */}
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 8,
-          padding: '6px 16px',
-          background: '#111',
-          border: '1px solid #222',
-          borderRadius: 20,
-          fontSize: 13,
-          color: '#888',
-          marginBottom: 28,
-        }}>
-          <Sparkles size={14} color="#3b82f6" />
-          AI-Powered Website Builder
-        </div>
+      {/* Background Image - Desktop */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: 'url(/hero-desktop.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: 0,
+        }}
+        className="hero-bg-desktop"
+      />
+      
+      {/* Background Image - Mobile */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: 'url(/hero-mobile.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: 0,
+        }}
+        className="hero-bg-mobile"
+      />
 
-        {/* Heading */}
+      {/* Dark Overlay for text readability */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'rgba(0, 0, 0, 0.5)',
+        zIndex: 1,
+      }} />
+
+      {/* Content */}
+      <div style={{
+        maxWidth: 720,
+        margin: '0 auto',
+        textAlign: 'center',
+        position: 'relative',
+        zIndex: 2,
+      }}>
+        {/* Heading - No Badge */}
         <h1 style={{
           fontSize: 'clamp(40px, 5.5vw, 64px)',
           fontWeight: 700,
@@ -53,7 +91,7 @@ export default function Hero() {
         {/* Subtitle */}
         <p style={{
           fontSize: 18,
-          color: '#888',
+          color: '#d0d0d0',
           marginBottom: 36,
           maxWidth: 480,
           marginLeft: 'auto',
@@ -69,21 +107,12 @@ export default function Hero() {
           gap: 8,
           maxWidth: 520,
           margin: '0 auto 20px',
-          background: '#111',
-          border: '1px solid #222',
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
           borderRadius: 12,
           padding: '6px',
-          transition: 'border-color 0.2s ease',
-        }}
-        onFocus={(e) => {
-          // @ts-ignore
-          e.currentTarget.style.borderColor = '#333'
-        }}
-        onBlur={(e) => {
-          // @ts-ignore
-          e.currentTarget.style.borderColor = '#222'
-        }}
-        >
+        }}>
           <input
             type="text"
             value={prompt}
@@ -118,8 +147,7 @@ export default function Hero() {
             onMouseEnter={(e) => e.currentTarget.style.background = '#2563eb'}
             onMouseLeave={(e) => e.currentTarget.style.background = '#3b82f6'}
           >
-            Build Now
-            <ArrowRight size={16} />
+            Build Now →
           </Link>
         </div>
 
@@ -128,17 +156,17 @@ export default function Hero() {
           display: 'flex', 
           flexWrap: 'wrap', 
           gap: 8, 
-          justifyContent: 'center', 
-          marginBottom: 0 
+          justifyContent: 'center' 
         }}>
           {['SaaS landing page', 'E-commerce store', 'Portfolio site'].map((example) => (
             <button
               key={example}
               onClick={() => setPrompt(example)}
               style={{
-                background: 'transparent',
-                border: '1px solid #222',
-                color: '#666',
+                background: 'rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                color: '#c0c0c0',
                 padding: '6px 14px',
                 borderRadius: 20,
                 cursor: 'pointer',
@@ -146,12 +174,14 @@ export default function Hero() {
                 transition: 'all 0.15s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#444'
-                e.currentTarget.style.color = '#999'
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)'
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)'
+                e.currentTarget.style.color = '#fff'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#222'
-                e.currentTarget.style.color = '#666'
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)'
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)'
+                e.currentTarget.style.color = '#c0c0c0'
               }}
             >
               {example}
@@ -159,6 +189,21 @@ export default function Hero() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        .hero-bg-mobile {
+          display: none;
+        }
+        
+        @media (max-width: 768px) {
+          .hero-bg-desktop {
+            display: none !important;
+          }
+          .hero-bg-mobile {
+            display: block !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

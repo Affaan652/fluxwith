@@ -28,34 +28,38 @@ export default function Footer() {
   return (
     <footer style={{
       background: '#0a0a0a',
-      borderTop: '1px solid #222',
-      padding: '48px 24px 24px',
+      borderTop: '1px solid #1a1a1a',
+      padding: '64px 24px 32px',
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-          gap: 32,
-          marginBottom: 40,
+          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+          gap: 48,
+          marginBottom: 56,
         }}>
           {/* Brand */}
           <div style={{ gridColumn: 'span 2' }}>
-            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', marginBottom: 12 }}>
-              <div style={{
-                width: 28,
-                height: 28,
-                background: '#fff',
-                borderRadius: 6,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 700,
-                color: '#000',
-                fontSize: 14,
-              }}>F</div>
-              <span style={{ fontWeight: 600, fontSize: 16, color: '#fff' }}>FluxWith</span>
+            <Link to="/" style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: 10, 
+              textDecoration: 'none', 
+              marginBottom: 16 
+            }}>
+              <img 
+                src="/logo.png" 
+                alt="FluxWith" 
+                style={{ 
+                  width: 32, 
+                  height: 32, 
+                  borderRadius: 8,
+                  objectFit: 'cover'
+                }} 
+              />
+              <span style={{ fontWeight: 600, fontSize: 18, color: '#fff' }}>FluxWith</span>
             </Link>
-            <p style={{ fontSize: 13, color: '#666', maxWidth: 220 }}>
+            <p style={{ fontSize: 14, color: '#666', maxWidth: 260, lineHeight: 1.7 }}>
               AI-powered website builder. Create stunning websites in seconds.
             </p>
           </div>
@@ -63,11 +67,30 @@ export default function Footer() {
           {/* Links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 style={{ fontSize: 12, fontWeight: 600, color: '#fff', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 12 }}>{title}</h4>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
+              <h4 style={{ 
+                fontSize: 12, 
+                fontWeight: 600, 
+                color: '#fff', 
+                textTransform: 'uppercase', 
+                letterSpacing: 2, 
+                marginBottom: 20 
+              }}>
+                {title}
+              </h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {links.map((link) => (
-                  <li key={link.href} style={{ marginBottom: 8 }}>
-                    <Link to={link.href} style={{ color: '#666', textDecoration: 'none', fontSize: 13 }}>
+                  <li key={link.href} style={{ marginBottom: 14 }}>
+                    <Link 
+                      to={link.href} 
+                      style={{ 
+                        color: '#666', 
+                        textDecoration: 'none', 
+                        fontSize: 14,
+                        transition: 'color 0.15s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#999'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#666'}
+                    >
                       {link.label}
                     </Link>
                   </li>
@@ -79,10 +102,11 @@ export default function Footer() {
 
         {/* Bottom */}
         <div style={{
-          borderTop: '1px solid #222',
-          paddingTop: 20,
+          borderTop: '1px solid #1a1a1a',
+          paddingTop: 28,
           display: 'flex',
           justifyContent: 'space-between',
+          alignItems: 'center',
           flexWrap: 'wrap',
           gap: 16,
           fontSize: 13,

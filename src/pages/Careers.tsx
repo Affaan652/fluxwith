@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { Link } from 'react-router-dom'
 import NavBar from '../components/landing/NavBar'
 import Footer from '../components/landing/Footer'
 
@@ -6,30 +6,26 @@ const openings = [
   {
     title: 'Senior Frontend Engineer',
     department: 'Engineering',
-    location: 'Remote (Global)',
+    location: 'Remote',
     type: 'Full-time',
-    description: 'Build and maintain our core web application using React, TypeScript, and modern web technologies.',
   },
   {
     title: 'AI/ML Engineer',
     department: 'AI Research',
-    location: 'San Francisco, CA',
+    location: 'Remote',
     type: 'Full-time',
-    description: 'Develop and improve our AI models for website building and design understanding.',
   },
   {
     title: 'Product Designer',
     department: 'Design',
-    location: 'Remote (US)',
+    location: 'Remote',
     type: 'Full-time',
-    description: 'Design intuitive user experiences for our visual editor and platform features.',
   },
   {
     title: 'Developer Advocate',
-    department: 'Developer Relations',
-    location: 'Remote (Global)',
+    department: 'Community',
+    location: 'Remote',
     type: 'Full-time',
-    description: 'Build relationships with developers, create content, and grow our community.',
   },
 ]
 
@@ -40,116 +36,217 @@ const benefits = [
   'Remote-first culture',
   'Learning & development budget',
   'Home office setup stipend',
-  'Annual team retreats',
-  'Parental leave',
 ]
 
 export default function Careers() {
   return (
-    <div className="min-h-screen bg-black">
+    <div style={{ minHeight: '100vh', background: '#0a0a0a' }}>
       <NavBar />
       
-      {/* Hero - COMPACT */}
-      <section className="pt-16 pb-12 px-6">
-        <div className="mx-auto max-w-6xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Company</span>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">Join our team</h1>
-            <p className="mt-2 text-sm text-gray-400 max-w-xl mx-auto">
-              Help us build the future of web creation. We're looking for passionate 
-              people who want to make a real impact.
-            </p>
-          </motion.div>
+      {/* Hero */}
+      <section style={{ padding: '100px 24px 60px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
+          <span style={{ 
+            fontSize: 13, 
+            fontWeight: 600, 
+            color: '#3b82f6', 
+            textTransform: 'uppercase', 
+            letterSpacing: 3,
+            display: 'block',
+            marginBottom: 16
+          }}>
+            Company
+          </span>
+          <h1 style={{ 
+            fontSize: 'clamp(36px, 5vw, 56px)', 
+            fontWeight: 700, 
+            color: '#fff', 
+            marginBottom: 20,
+            letterSpacing: '-0.03em'
+          }}>
+            Join our team
+          </h1>
+          <p style={{ 
+            fontSize: 17, 
+            color: '#888', 
+            maxWidth: 520,
+            margin: '0 auto',
+            lineHeight: 1.7,
+            fontWeight: 300
+          }}>
+            Help us build the future of web creation. We're looking for passionate people who want to make a real impact.
+          </p>
         </div>
       </section>
 
-      {/* Benefits - COMPACT */}
-      <section className="py-8 px-6 border-t border-white/10">
-        <div className="mx-auto max-w-6xl">
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">
+      {/* Benefits - No icons */}
+      <section style={{ 
+        padding: '40px 24px',
+        borderTop: '1px solid #1a1a1a'
+      }}>
+        <div style={{ maxWidth: 800, margin: '0 auto' }}>
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 16,
+            justifyContent: 'center',
+          }}>
             {benefits.map((benefit) => (
-              <div key={benefit} className="flex items-center gap-2 text-xs text-gray-400">
-                <svg className="h-4 w-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                {benefit}
+              <div key={benefit} style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                padding: '10px 20px',
+                background: '#111',
+                borderRadius: 30,
+                border: '1px solid #1a1a1a',
+              }}>
+                <span style={{ color: '#4ade80', fontSize: 12 }}>✓</span>
+                <span style={{ color: '#aaa', fontSize: 13 }}>{benefit}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Open positions - COMPACT */}
-      <section className="py-12 px-6">
-        <div className="mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-8"
-          >
-            <h2 className="text-xl font-bold text-white">Open positions</h2>
-            <p className="text-xs text-gray-500 mt-1">{openings.length} roles available</p>
-          </motion.div>
+      {/* Open positions */}
+      <section style={{ padding: '60px 24px' }}>
+        <div style={{ maxWidth: 700, margin: '0 auto' }}>
+          <h2 style={{ 
+            fontSize: 28, 
+            fontWeight: 700, 
+            color: '#fff', 
+            marginBottom: 8,
+            letterSpacing: '-0.02em'
+          }}>
+            Open positions
+          </h2>
+          <p style={{ fontSize: 14, color: '#666', marginBottom: 40 }}>
+            {openings.length} roles available
+          </p>
 
-          <div className="space-y-3">
-            {openings.map((job, index) => (
-              <motion.div
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {openings.map((job) => (
+              <div
                 key={job.title}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className="group rounded-lg border border-white/10 p-5 hover:border-white/20 transition-colors cursor-pointer"
+                style={{
+                  background: '#111',
+                  border: '1px solid #1a1a1a',
+                  borderRadius: 14,
+                  padding: '28px 32px',
+                  transition: 'all 0.2s ease',
+                  cursor: 'pointer',
+                }}
               >
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: 16,
+                }}>
                   <div>
-                    <h3 className="text-base font-semibold text-white group-hover:text-white transition-colors">
+                    <h3 style={{ 
+                      fontSize: 18, 
+                      fontWeight: 600, 
+                      color: '#fff', 
+                      marginBottom: 6,
+                      letterSpacing: '-0.01em'
+                    }}>
                       {job.title}
                     </h3>
-                    <p className="text-xs text-gray-500 mt-0.5">{job.department}</p>
-                    <p className="text-xs text-gray-400 mt-2">{job.description}</p>
+                    <p style={{ fontSize: 14, color: '#666' }}>{job.department}</p>
                   </div>
                   
-                  <div className="shrink-0 flex flex-wrap gap-2">
-                    <span className="px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-medium text-gray-300">
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    <span style={{ 
+                      padding: '6px 14px', 
+                      borderRadius: 20, 
+                      background: '#1a1a1a', 
+                      color: '#888',
+                      fontSize: 12,
+                    }}>
                       {job.location}
                     </span>
-                    <span className="px-2 py-0.5 rounded-full bg-white text-[10px] font-medium text-black">
+                    <span style={{ 
+                      padding: '6px 14px', 
+                      borderRadius: 20, 
+                      background: '#3b82f6', 
+                      color: '#fff',
+                      fontSize: 12,
+                      fontWeight: 500,
+                    }}>
                       {job.type}
                     </span>
                   </div>
                 </div>
                 
-                <div className="mt-3 pt-3 border-t border-white/10 flex justify-end">
-                  <span className="inline-flex items-center gap-1 text-xs font-medium text-gray-300 group-hover:text-white transition-colors">
-                    Apply now
-                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                <div style={{
+                  marginTop: 20,
+                  paddingTop: 20,
+                  borderTop: '1px solid #1a1a1a',
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                }}>
+                  <span style={{ 
+                    fontSize: 13, 
+                    fontWeight: 500,
+                    color: '#888',
+                    transition: 'color 0.15s ease',
+                  }}>
+                    Apply now →
                   </span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* No role? */}
-          <div className="mt-10 rounded-lg bg-white/5 border border-white/10 p-6 text-center">
-            <h3 className="text-lg font-bold text-white">Don't see your role?</h3>
-            <p className="mt-1 text-sm text-gray-400">
+          <div style={{
+            marginTop: 48,
+            background: '#111',
+            border: '1px solid #1a1a1a',
+            borderRadius: 16,
+            padding: '40px',
+            textAlign: 'center',
+          }}>
+            <h3 style={{ 
+              fontSize: 20, 
+              fontWeight: 600, 
+              color: '#fff', 
+              marginBottom: 12 
+            }}>
+              Don't see your role?
+            </h3>
+            <p style={{ 
+              fontSize: 14, 
+              color: '#888', 
+              marginBottom: 24,
+              lineHeight: 1.7
+            }}>
               We're always interested in hearing from talented people. Send us your resume.
             </p>
-            <a
-              href="/contact"
-              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-xs font-medium text-black hover:bg-gray-100 active:scale-[0.96] transition-all duration-150 ease-out"
+            <Link
+              to="/contact"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                background: '#fff',
+                color: '#000',
+                padding: '12px 24px',
+                borderRadius: 10,
+                textDecoration: 'none',
+                fontWeight: 500,
+                fontSize: 14,
+                transition: 'all 0.15s ease',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = '#e5e5e5'}
+              onMouseLeave={(e) => e.currentTarget.style.background = '#fff'}
             >
-              Get in touch
-            </a>
+              Get in touch →
+            </Link>
           </div>
         </div>
       </section>

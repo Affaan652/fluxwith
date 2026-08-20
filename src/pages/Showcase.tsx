@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Sparkles, Pencil, Box, ArrowRight, Check } from 'lucide-react'
 import NavBar from '../components/landing/NavBar'
 import Footer from '../components/landing/Footer'
 
@@ -8,7 +7,6 @@ const featureCategories = [
   {
     id: 'building',
     title: 'AI Building',
-    icon: Sparkles,
     features: [
       {
         name: 'Prompt-to-Site',
@@ -27,7 +25,6 @@ const featureCategories = [
   {
     id: 'editor',
     title: 'Visual Editor',
-    icon: Pencil,
     features: [
       {
         name: 'Inline Editing',
@@ -46,7 +43,6 @@ const featureCategories = [
   {
     id: 'components',
     title: 'Component Library',
-    icon: Box,
     features: [
       {
         name: 'Hero Sections',
@@ -75,35 +71,37 @@ export default function Showcase() {
       <NavBar />
       
       {/* Header */}
-      <section style={{ padding: '80px 24px 40px' }}>
+      <section style={{ padding: '100px 24px 60px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
           <span style={{ 
-            fontSize: 12, 
+            fontSize: 13, 
             fontWeight: 600, 
-            color: '#666', 
+            color: '#3b82f6', 
             textTransform: 'uppercase', 
-            letterSpacing: 1.5 
+            letterSpacing: 3,
+            display: 'block',
+            marginBottom: 16
           }}>
             Features Showcase
           </span>
           <h1 style={{ 
-            fontSize: 'clamp(32px, 4vw, 48px)', 
+            fontSize: 'clamp(36px, 5vw, 56px)', 
             fontWeight: 700, 
             color: '#fff', 
-            marginTop: 8, 
-            marginBottom: 16,
-            letterSpacing: '-0.02em'
+            marginBottom: 20,
+            letterSpacing: '-0.03em'
           }}>
             Explore every feature
           </h1>
           <p style={{ 
-            fontSize: 15, 
+            fontSize: 17, 
             color: '#888', 
-            maxWidth: 480,
+            maxWidth: 500,
             margin: '0 auto',
-            lineHeight: 1.6
+            lineHeight: 1.7,
+            fontWeight: 300
           }}>
-            Dive deep into what makes FluxWith powerful. See real examples and understand how each feature works.
+            Dive deep into what makes FluxWith powerful.
           </p>
         </div>
       </section>
@@ -111,273 +109,167 @@ export default function Showcase() {
       {/* Main showcase area */}
       <section style={{ padding: '40px 24px 80px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '200px 1fr',
-            gap: 32,
+          {/* Category tabs - No icons */}
+          <div style={{ 
+            display: 'flex', 
+            gap: 8, 
+            marginBottom: 40,
+            justifyContent: 'center',
+            flexWrap: 'wrap'
           }}>
-            {/* Sidebar navigation - Desktop only */}
-            <div className="sidebar-nav">
-              <div style={{
-                position: 'sticky',
-                top: 80,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 4,
-              }}>
-                {featureCategories.map((category) => {
-                  const Icon = category.icon
-                  return (
-                    <button
-                      key={category.id}
-                      onClick={() => {
-                        setActiveCategory(category.id)
-                        setActiveFeature(0)
-                      }}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 10,
-                        padding: '10px 14px',
-                        borderRadius: 8,
-                        background: activeCategory === category.id ? '#fff' : 'transparent',
-                        color: activeCategory === category.id ? '#000' : '#888',
-                        border: 'none',
-                        cursor: 'pointer',
-                        fontSize: 13,
-                        fontWeight: 500,
-                        textAlign: 'left',
-                        transition: 'all 0.15s ease',
-                      }}
-                      onMouseEnter={(e) => {
-                        if (activeCategory !== category.id) {
-                          e.currentTarget.style.background = '#111'
-                          e.currentTarget.style.color = '#fff'
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (activeCategory !== category.id) {
-                          e.currentTarget.style.background = 'transparent'
-                          e.currentTarget.style.color = '#888'
-                        }
-                      }}
-                    >
-                      <Icon size={16} />
-                      {category.title}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
+            {featureCategories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => {
+                  setActiveCategory(category.id)
+                  setActiveFeature(0)
+                }}
+                style={{
+                  flexShrink: 0,
+                  padding: '10px 24px',
+                  borderRadius: 30,
+                  background: activeCategory === category.id ? '#fff' : '#111',
+                  color: activeCategory === category.id ? '#000' : '#888',
+                  border: activeCategory === category.id ? 'none' : '1px solid #222',
+                  cursor: 'pointer',
+                  fontSize: 13,
+                  fontWeight: 500,
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                {category.title}
+              </button>
+            ))}
+          </div>
 
-            {/* Mobile category tabs */}
-            <div className="mobile-tabs" style={{
-              display: 'none',
-              gap: 8,
-              marginBottom: 24,
+          {/* Content area */}
+          <div style={{
+            background: '#111',
+            borderRadius: 20,
+            overflow: 'hidden',
+            border: '1px solid #1a1a1a',
+          }}>
+            {/* Feature tabs */}
+            <div style={{ 
+              display: 'flex', 
+              gap: 4,
+              background: '#0a0a0a',
+              padding: 16,
+              borderBottom: '1px solid #1a1a1a',
               overflowX: 'auto',
-              paddingBottom: 8,
             }}>
-              {featureCategories.map((category) => (
+              {currentCategory.features.map((feature, index) => (
                 <button
-                  key={category.id}
-                  onClick={() => {
-                    setActiveCategory(category.id)
-                    setActiveFeature(0)
-                  }}
+                  key={feature.name}
+                  onClick={() => setActiveFeature(index)}
                   style={{
                     flexShrink: 0,
-                    padding: '8px 16px',
-                    borderRadius: 20,
-                    background: activeCategory === category.id ? '#fff' : '#111',
-                    color: activeCategory === category.id ? '#000' : '#888',
+                    padding: '10px 20px',
+                    borderRadius: 8,
+                    background: activeFeature === index ? '#1a1a1a' : 'transparent',
+                    color: activeFeature === index ? '#fff' : '#666',
                     border: 'none',
                     cursor: 'pointer',
-                    fontSize: 12,
+                    fontSize: 13,
                     fontWeight: 500,
                     transition: 'all 0.15s ease',
                   }}
                 >
-                  {category.title}
+                  {feature.name}
                 </button>
               ))}
             </div>
 
-            {/* Content area */}
-            <div>
-              {/* Category header */}
-              <div style={{ marginBottom: 28 }}>
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  padding: '6px 14px',
-                  background: '#fff',
-                  borderRadius: 20,
-                  marginBottom: 16,
-                }}>
-                  {(() => {
-                    const Icon = currentCategory.icon
-                    return <Icon size={14} />
-                  })()}
-                  <span style={{ 
-                    fontSize: 12, 
-                    fontWeight: 600,
-                    color: '#000' 
-                  }}>
-                    {currentCategory.title}
-                  </span>
-                </div>
-                <h2 style={{ 
-                  fontSize: 22, 
-                  fontWeight: 700, 
-                  color: '#fff',
-                  letterSpacing: '-0.01em'
-                }}>
-                  Powerful tools for modern builders
-                </h2>
-              </div>
-
-              {/* Feature tabs */}
-              <div style={{ 
-                display: 'flex', 
-                gap: 8, 
-                marginBottom: 24,
-                overflowX: 'auto',
-                paddingBottom: 8,
-              }}>
-                {currentCategory.features.map((feature, index) => (
-                  <button
-                    key={feature.name}
-                    onClick={() => setActiveFeature(index)}
-                    style={{
-                      flexShrink: 0,
-                      padding: '8px 16px',
-                      borderRadius: 8,
-                      background: activeFeature === index ? '#fff' : '#111',
-                      color: activeFeature === index ? '#000' : '#888',
-                      border: 'none',
-                      cursor: 'pointer',
-                      fontSize: 12,
-                      fontWeight: 500,
-                      transition: 'all 0.15s ease',
-                    }}
-                  >
-                    {feature.name}
-                  </button>
-                ))}
-              </div>
-
-              {/* Feature content */}
+            {/* Feature content */}
+            <div style={{ padding: '48px' }}>
               <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: 24,
+                maxWidth: 700,
               }}>
-                {/* Description */}
-                <div>
-                  <h3 style={{ 
-                    fontSize: 18, 
-                    fontWeight: 600, 
-                    color: '#fff', 
-                    marginBottom: 12 
-                  }}>
-                    {currentCategory.features[activeFeature].name}
-                  </h3>
-                  <p style={{ 
-                    fontSize: 14, 
-                    color: '#888', 
-                    lineHeight: 1.6,
-                    marginBottom: 24 
-                  }}>
-                    {currentCategory.features[activeFeature].description}
-                  </p>
-                  
-                  {/* Feature details list */}
-                  <ul style={{ 
-                    listStyle: 'none', 
-                    padding: 0, 
-                    margin: 0, 
-                    marginBottom: 28 
-                  }}>
-                    {[
-                      'Intuitive interface with zero learning curve',
-                      'Real-time preview as you make changes',
-                      'Keyboard shortcuts for power users',
-                      'Undo/redo history for all actions',
-                      'Export settings for team consistency',
-                    ].map((item) => (
-                      <li key={item} style={{ 
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 10,
-                        padding: '8px 0',
-                        fontSize: 13,
-                        color: '#888',
-                      }}>
-                        <Check size={14} color="#4ade80" strokeWidth={2.5} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Link
-                    to="/signup"
-                    style={{
-                      display: 'inline-flex',
+                <span style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: '#3b82f6',
+                  letterSpacing: 2,
+                  display: 'block',
+                  marginBottom: 12,
+                }}>
+                  FEATURE
+                </span>
+                
+                <h2 style={{ 
+                  fontSize: 28, 
+                  fontWeight: 700, 
+                  color: '#fff', 
+                  marginBottom: 16,
+                  letterSpacing: '-0.02em'
+                }}>
+                  {currentCategory.features[activeFeature].name}
+                </h2>
+                
+                <p style={{ 
+                  fontSize: 16, 
+                  color: '#888', 
+                  lineHeight: 1.8,
+                  marginBottom: 32,
+                  fontWeight: 300
+                }}>
+                  {currentCategory.features[activeFeature].description}
+                </p>
+                
+                {/* Feature details list - No icons */}
+                <ul style={{ 
+                  listStyle: 'none', 
+                  padding: 0, 
+                  margin: '0 0 40px 0',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                  gap: 12,
+                }}>
+                  {[
+                    'Intuitive interface with zero learning curve',
+                    'Real-time preview as you make changes',
+                    'Keyboard shortcuts for power users',
+                    'Undo/redo history for all actions',
+                    'Export settings for team consistency',
+                    'Works offline when needed',
+                  ].map((item) => (
+                    <li key={item} style={{ 
+                      display: 'flex',
                       alignItems: 'center',
-                      gap: 8,
-                      background: '#fff',
-                      color: '#000',
-                      padding: '12px 24px',
-                      borderRadius: 8,
-                      textDecoration: 'none',
-                      fontWeight: 500,
+                      gap: 10,
+                      padding: '10px 0',
                       fontSize: 14,
-                      transition: 'all 0.15s ease',
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = '#e5e5e5'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = '#fff'}
-                  >
-                    Try it now
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
+                      color: '#aaa',
+                    }}>
+                      <span style={{ 
+                        color: '#4ade80',
+                        fontSize: 12
+                      }}>✓</span> 
+                      {item}
+                    </li>
+                  ))}
+                </ul>
 
-                {/* Demo placeholder */}
-                <div>
-                  <div style={{
-                    borderRadius: 12,
-                    border: '1px solid #1f1f1f',
-                    background: '#111',
-                    padding: 48,
-                    display: 'flex',
+                <Link
+                  to="/signup"
+                  style={{
+                    display: 'inline-flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    minHeight: 200,
-                  }}>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{
-                        width: 56,
-                        height: 56,
-                        margin: '0 auto 16px',
-                        borderRadius: '50%',
-                        background: '#1a1a1a',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}>
-                        <Sparkles size={24} color="#555" />
-                      </div>
-                      <p style={{ 
-                        fontSize: 14, 
-                        color: '#555' 
-                      }}>
-                        Interactive Demo
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                    gap: 10,
+                    background: '#fff',
+                    color: '#000',
+                    padding: '14px 28px',
+                    borderRadius: 10,
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                    fontSize: 14,
+                    transition: 'all 0.15s ease',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#e5e5e5'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = '#fff'}
+                >
+                  Try it now →
+                </Link>
               </div>
             </div>
           </div>
@@ -387,25 +279,28 @@ export default function Showcase() {
       {/* CTA section */}
       <section style={{ 
         margin: '0 24px 60px',
-        background: '#fff',
-        borderRadius: 14,
-        padding: 48,
+        background: '#111',
+        borderRadius: 20,
+        padding: 56,
         textAlign: 'center',
+        border: '1px solid #1a1a1a',
       }}>
         <h2 style={{ 
-          fontSize: 24, 
+          fontSize: 'clamp(28px, 4vw, 36px)', 
           fontWeight: 700, 
-          color: '#000', 
-          marginBottom: 12 
+          color: '#fff', 
+          marginBottom: 16,
+          letterSpacing: '-0.02em'
         }}>
           Ready to experience these features?
         </h2>
         <p style={{ 
-          fontSize: 14, 
-          color: '#666', 
-          marginBottom: 24,
-          maxWidth: 400,
-          margin: '0 auto 24px'
+          fontSize: 15, 
+          color: '#888', 
+          marginBottom: 32,
+          maxWidth: 420,
+          margin: '0 auto 32px',
+          lineHeight: 1.7
         }}>
           Start building for free today and see how FluxWith can transform your workflow.
         </p>
@@ -414,32 +309,31 @@ export default function Showcase() {
           style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: 8,
-            background: '#000',
+            gap: 10,
+            background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
             color: '#fff',
-            padding: '14px 28px',
-            borderRadius: 8,
+            padding: '16px 32px',
+            borderRadius: 12,
             textDecoration: 'none',
             fontWeight: 500,
-            fontSize: 14,
-            transition: 'all 0.15s ease',
+            fontSize: 15,
+            boxShadow: '0 4px 20px rgba(59, 130, 246, 0.3)',
+            transition: 'all 0.25s ease',
           }}
-          onMouseEnter={(e) => e.currentTarget.style.background = '#222'}
-          onMouseLeave={(e) => e.currentTarget.style.background = '#000'}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 8px 30px rgba(59, 130, 246, 0.4)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 4px 20px rgba(59, 130, 246, 0.3)'
+          }}
         >
-          Get started free
-          <ArrowRight size={15} />
+          Get started free →
         </Link>
       </section>
 
       <Footer />
-
-      <style>{`
-        @media (max-width: 1024px) {
-          .sidebar-nav { display: none !important; }
-          .mobile-tabs { display: flex !important; }
-        }
-      `}</style>
     </div>
   )
 }

@@ -1,28 +1,27 @@
 import { Link } from 'react-router-dom'
-import { Users, Sparkles, Eye, Shield, ArrowRight } from 'lucide-react'
 import NavBar from '../components/landing/NavBar'
 import Footer from '../components/landing/Footer'
 
 const values = [
   {
+    number: '01',
     title: 'User First',
     description: 'Every decision starts with how it impacts our users.',
-    icon: Users,
   },
   {
+    number: '02',
     title: 'Innovation',
     description: 'Pushing boundaries to build the future of web creation.',
-    icon: Sparkles,
   },
   {
+    number: '03',
     title: 'Transparency',
     description: 'Open about our process, pricing, and decisions.',
-    icon: Eye,
   },
   {
+    number: '04',
     title: 'Quality',
     description: 'Excellence in every line of code and pixel of design.',
-    icon: Shield,
   },
 ]
 
@@ -33,33 +32,36 @@ export default function About() {
       
       {/* Hero */}
       <section style={{ padding: '100px 24px 60px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
           <span style={{ 
-            fontSize: 12, 
+            fontSize: 13, 
             fontWeight: 600, 
-            color: '#666', 
+            color: '#3b82f6', 
             textTransform: 'uppercase', 
-            letterSpacing: 1.5 
+            letterSpacing: 3,
+            display: 'block',
+            marginBottom: 16
           }}>
             Company
           </span>
           <h1 style={{ 
-            fontSize: 'clamp(32px, 4vw, 48px)', 
+            fontSize: 'clamp(36px, 5vw, 56px)', 
             fontWeight: 700, 
             color: '#fff', 
-            marginTop: 8, 
-            marginBottom: 16,
-            letterSpacing: '-0.02em'
+            marginBottom: 20,
+            letterSpacing: '-0.03em'
           }}>
             About FluxWith
           </h1>
           <p style={{ 
-            fontSize: 16, 
+            fontSize: 17, 
             color: '#888', 
             maxWidth: 520,
-            lineHeight: 1.6 
+            margin: '0 auto',
+            lineHeight: 1.7,
+            fontWeight: 300
           }}>
-            We're on a mission to democratize website creation — making it accessible to everyone, regardless of technical skills.
+            We're on a mission to democratize website creation — making it accessible to everyone.
           </p>
         </div>
       </section>
@@ -67,37 +69,47 @@ export default function About() {
       {/* Mission */}
       <section style={{ 
         padding: '60px 24px',
-        borderTop: '1px solid #1f1f1f'
+        borderTop: '1px solid #1a1a1a'
       }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: 48,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 64,
             alignItems: 'center',
           }}>
             <div>
+              <span style={{
+                fontSize: 12,
+                fontWeight: 700,
+                color: '#3b82f6',
+                letterSpacing: 2,
+                display: 'block',
+                marginBottom: 16
+              }}>OUR MISSION</span>
               <h2 style={{ 
-                fontSize: 28, 
+                fontSize: 'clamp(28px, 4vw, 36px)', 
                 fontWeight: 700, 
                 color: '#fff', 
-                marginBottom: 16,
+                marginBottom: 20,
                 letterSpacing: '-0.02em'
               }}>
-                Our mission
+                Building the future of web creation
               </h2>
               <p style={{ 
                 fontSize: 15, 
                 color: '#888', 
-                lineHeight: 1.7,
-                marginBottom: 16
+                lineHeight: 1.8,
+                marginBottom: 16,
+                fontWeight: 300
               }}>
                 FluxWith was born from a simple idea: everyone should be able to create beautiful websites without needing to learn complex technologies.
               </p>
               <p style={{ 
                 fontSize: 15, 
                 color: '#888', 
-                lineHeight: 1.7
+                lineHeight: 1.8,
+                fontWeight: 300
               }}>
                 We believe AI can bridge the gap between imagination and reality, empowering creators, entrepreneurs, and businesses to bring their ideas to life instantly.
               </p>
@@ -105,9 +117,9 @@ export default function About() {
 
             <div style={{
               background: '#111',
-              border: '1px solid #1f1f1f',
-              borderRadius: 16,
-              padding: 60,
+              border: '1px solid #1a1a1a',
+              borderRadius: 20,
+              padding: 80,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -117,14 +129,14 @@ export default function About() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: 72,
-                  height: 72,
+                  width: 80,
+                  height: 80,
                   background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
-                  borderRadius: 18,
-                  marginBottom: 16,
+                  borderRadius: 20,
+                  marginBottom: 20,
                 }}>
                   <span style={{ 
-                    fontSize: 32, 
+                    fontSize: 36, 
                     fontWeight: 700, 
                     color: '#fff' 
                   }}>F</span>
@@ -132,7 +144,7 @@ export default function About() {
                 <p style={{ 
                   fontSize: 14, 
                   fontWeight: 500,
-                  color: '#888' 
+                  color: '#666' 
                 }}>
                   Building the future
                 </p>
@@ -142,15 +154,15 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values */}
+      {/* Values - No Icons */}
       <section style={{ 
         padding: '60px 24px',
-        borderTop: '1px solid #1f1f1f'
+        borderTop: '1px solid #1a1a1a'
       }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <h2 style={{ 
-              fontSize: 28, 
+              fontSize: 'clamp(28px, 4vw, 36px)', 
               fontWeight: 700, 
               color: '#fff', 
               marginBottom: 12,
@@ -158,60 +170,56 @@ export default function About() {
             }}>
               Our values
             </h2>
-            <p style={{ fontSize: 15, color: '#888', maxWidth: 400, margin: '0 auto' }}>
+            <p style={{ fontSize: 15, color: '#777', maxWidth: 420, margin: '0 auto', lineHeight: 1.7 }}>
               The principles that guide everything we do.
             </p>
           </div>
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: 16,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: 1,
+            background: '#1a1a1a',
+            borderRadius: 20,
+            overflow: 'hidden',
           }}>
-            {values.map((value) => {
-              const Icon = value.icon
-              return (
-                <div
-                  key={value.title}
-                  style={{
-                    background: '#111',
-                    border: '1px solid #1f1f1f',
-                    borderRadius: 14,
-                    padding: 24,
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  <div style={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: 10,
-                    background: 'rgba(59, 130, 246, 0.15)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: 16,
-                    color: '#3b82f6',
-                  }}>
-                    <Icon size={20} />
-                  </div>
-                  <h3 style={{ 
-                    fontSize: 16, 
-                    fontWeight: 600, 
-                    color: '#fff', 
-                    marginBottom: 8 
-                  }}>
-                    {value.title}
-                  </h3>
-                  <p style={{ 
-                    fontSize: 13, 
-                    color: '#888', 
-                    lineHeight: 1.5 
-                  }}>
-                    {value.description}
-                  </p>
-                </div>
-              )
-            })}
+            {values.map((value) => (
+              <div
+                key={value.title}
+                style={{
+                  background: '#111',
+                  padding: '36px 28px',
+                }}
+              >
+                <span style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: '#3b82f6',
+                  letterSpacing: 2,
+                  display: 'block',
+                  marginBottom: 16,
+                }}>
+                  {value.number}
+                </span>
+                <h3 style={{ 
+                  fontSize: 17, 
+                  fontWeight: 600, 
+                  color: '#fff', 
+                  marginBottom: 10,
+                  letterSpacing: '-0.01em'
+                }}>
+                  {value.title}
+                </h3>
+                <p style={{ 
+                  fontSize: 13, 
+                  color: '#888', 
+                  lineHeight: 1.7,
+                  fontWeight: 300
+                }}>
+                  {value.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -220,14 +228,14 @@ export default function About() {
       <section style={{ 
         background: '#111',
         padding: '60px 24px',
-        borderTop: '1px solid #1f1f1f'
+        borderTop: '1px solid #1a1a1a'
       }}>
-        <div style={{ maxWidth: 480, margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ maxWidth: 520, margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ 
-            fontSize: 28, 
+            fontSize: 'clamp(28px, 4vw, 36px)', 
             fontWeight: 700, 
             color: '#fff', 
-            marginBottom: 12,
+            marginBottom: 16,
             letterSpacing: '-0.02em'
           }}>
             Want to join us?
@@ -235,7 +243,8 @@ export default function About() {
           <p style={{ 
             fontSize: 15, 
             color: '#888', 
-            marginBottom: 28 
+            marginBottom: 32,
+            lineHeight: 1.7
           }}>
             We're always looking for talented people to join our team.
           </p>
@@ -244,21 +253,27 @@ export default function About() {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: 8,
+              gap: 10,
               background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
               color: '#fff',
-              padding: '14px 28px',
-              borderRadius: 10,
+              padding: '16px 32px',
+              borderRadius: 12,
               textDecoration: 'none',
               fontWeight: 500,
-              fontSize: 14,
-              transition: 'all 0.2s ease',
+              fontSize: 15,
+              boxShadow: '0 4px 20px rgba(59, 130, 246, 0.3)',
+              transition: 'all 0.25s ease',
             }}
-            onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
-            onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)'
+              e.currentTarget.style.boxShadow = '0 8px 30px rgba(59, 130, 246, 0.4)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(59, 130, 246, 0.3)'
+            }}
           >
-            View open positions
-            <ArrowRight size={16} />
+            View open positions →
           </Link>
         </div>
       </section>
